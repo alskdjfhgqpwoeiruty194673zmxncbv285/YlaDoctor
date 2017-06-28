@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017. KAREEM ElSAYED ALY  ALL RIGHTS RESERVED.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+                android:padding="25dp"
+                android:background="#55ff55"
+              android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/newGeneralPage2_LinearLayout_records"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:foregroundGravity="right"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <ImageButton
+            android:layout_width="25dp"
+            android:background="#00000000"
+            android:src="@mipmap/records"
+            android:layout_height="25dp"
+            android:scaleType="centerCrop"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="medical\n records"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/newGeneralPage2_LinearLayout_history"
+        android:gravity="center"
+        android:foregroundGravity="left"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="#00000000"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/history"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="history"/>
+    </LinearLayout>
+    <ImageButton
+        android:id="@+id/newGeneralPage2_ImageButton_BookAppointment"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerCrop"
+        android:background="#00000000"
+        android:src="@mipmap/logo"/>
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/newGeneralPage2_ImageButton_emergency"
+        android:foregroundGravity="bottom"
+        android:scaleType="centerCrop"
+        android:background="#00000000"
+        android:src="@mipmap/logo"
+        android:layout_below="@+id/newGeneralPage2_ImageButton_BookAppointment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"/>
+</RelativeLayout>

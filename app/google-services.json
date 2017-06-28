@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "142860343125",
+    "firebase_url": "https://yladoctor-89456.firebaseio.com",
+    "project_id": "yladoctor-89456",
+    "storage_bucket": "yladoctor-89456.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142860343125:android:d23b99876f4b33ee",
+        "android_client_info": {
+          "package_name": "com.kareem.yladoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142860343125-iru9c5ilnv1s609risgkp9qd5v73ljhj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kareem.yladoctor",
+            "certificate_hash": "f9f031c8d6fa2179684309ea1facbf43a102c1a3"
+          }
+        },
+        {
+          "client_id": "142860343125-9pp4vvl9r2ofes9kd8ln4ietig97r09i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv5gLBsHVXxlkdi2cwktcmciRc5OQotlE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142860343125-9pp4vvl9r2ofes9kd8ln4ietig97r09i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
