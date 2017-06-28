@@ -76,12 +76,13 @@ public class FirebaseContracts {
 	public static final String PATH_TO_APPOINTMENTHISTORY_SAVEDID_TIME = "time";
 	public static final String PATH_TO_APPOINTMENTHISTORY_SAVEDID_VOTE = "vote";
 	public static final String PATH_TO_APPOINTMENTHISTORY_SAVEDID_REVIEWOWNER_RATE = "rate";
-	public static final String PATH_TO_APPOINTMENTHISTORY_SAVEDID_REVIEWOWNER_DESC= "desc";
+	public static final String PATH_TO_APPOINTMENTHISTORY_SAVEDID_REVIEWOWNER_DESC = "desc";
 
 	public static final String PATH_TO_GeoFireLocation = "geoFireLocation";
 
 	public static final String ARABIC = String.valueOf(DefaultLanguages.Arabic);
 	public static final String ENGLISH = String.valueOf(DefaultLanguages.English);
+	public static final String PATH_TO_GEOFIRELOCATION = "geoFireLocation";
 
 	public static final String PASSWORD = "yladoctor";
 }
