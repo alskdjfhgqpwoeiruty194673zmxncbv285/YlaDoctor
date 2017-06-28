@@ -11,8 +11,10 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.kareem.yladoctor.MainApplication;
 import com.kareem.yladoctor.Models.Modules.User.Businesses.Individuals.Patient;
 import com.kareem.yladoctor.R;
@@ -21,8 +23,6 @@ import com.kareem.yladoctor.Views.Activites.general.EntryContainer;
 import com.kareem.yladoctor.Views.Activites.general.MainPage;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
-
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,7 +41,6 @@ public class PatientMainScreenTwo extends Fragment implements View.OnClickListen
 	private final String Home = "Home";
 	private final String Settings = "Settings";
 	private final String SignOut = "SignOut";
-	private Patient patient;
 
 	@OnClick(R.id.patientMainViewTwo_ImageButton_settings)
 	public void onSettingsClicked () {
@@ -50,6 +49,8 @@ public class PatientMainScreenTwo extends Fragment implements View.OnClickListen
 
 	@BindView(R.id.patientMainViewTwo_textView_name)
 	TextView name;
+	@BindView(R.id.patientMainViewTwo_imageView_personalImage)
+	ImageView profilePicture;
 	ResideMenu resideMenu;
 
 	@Nullable
@@ -62,8 +63,10 @@ public class PatientMainScreenTwo extends Fragment implements View.OnClickListen
 	public void onViewCreated ( View view, @Nullable Bundle savedInstanceState ) {
 		super.onViewCreated(view, savedInstanceState);
 		ButterKnife.bind(this, view);
-		patient = (Patient) ((MainApplication) this.getActivity().getApplication()).getUser();
+		Patient patient = (Patient) ((MainApplication) this.getActivity().getApplication()).getUser();
 		name.setText(patient.getName());
+		Glide.with(this.getActivity()).load(patient.getProfilePicture().getURL()).into(profilePicture);
+
 		resideMenu = new ResideMenu(this.getActivity());
 		resideMenu.attachToActivity(this.getActivity());
 		resideMenu.setBackground(R.mipmap.logo);

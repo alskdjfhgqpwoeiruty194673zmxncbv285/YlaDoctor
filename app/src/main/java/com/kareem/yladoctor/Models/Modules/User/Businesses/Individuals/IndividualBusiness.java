@@ -5,7 +5,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.kareem.yladoctor.Models.Contracts.FirebaseContracts;
 import com.kareem.yladoctor.Models.Enums.AccountType;
 import com.kareem.yladoctor.Models.Modules.Attachments.Picture;
-import com.kareem.yladoctor.Models.Modules.User.Individual;
 import com.kareem.yladoctor.Models.Modules.User.User;
 
 import java.util.HashMap;
