@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">YlaDoctor</string>
+    <string name="web_client_id">142860343125-9pp4vvl9r2ofes9kd8ln4ietig97r09i.apps.googleusercontent.com</string>
+    <string name="local_code">+20</string>
+    <!--<string name="facebook_app_id" translatable="false">1722838051077505</string>-->
+    <string name="facebook_application_id" translatable="false">1722838051077505</string>
+    <string name="fb_login_protocol_scheme">fb1722838051077505</string>
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">Impd8eFSiwKHCqSNG8g4Umlnm</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">1696LBKqkUgZqrixS0l2C5tnS1PSuzJYSQazn5AUS8j9aGsUqT</string>
+</resources>
