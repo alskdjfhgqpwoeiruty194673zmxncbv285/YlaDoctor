@@ -22,7 +22,8 @@ public class Individual extends User {
 	private int points;
 	//profile picture for that individual
 	private Picture profilePicture;
-
+	//mobile number of the user
+	private String mobileNumber;
 	//name of that user
 	private String name;
 
@@ -48,12 +49,21 @@ public class Individual extends User {
 		super(accountType, firebaseUser);
 		this.profilePicture = new Picture(firebaseUser.getPhotoUrl().toString());
 		this.name = firebaseUser.getDisplayName();
+		this.mobileNumber = firebaseUser.getPhoneNumber();
 	}
 
 	/**
 	 * empty constructor for firebase
 	 */
 	public Individual () {
+	}
+
+	public String getMobileNumber () {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber ( String mobileNumber ) {
+		this.mobileNumber = mobileNumber;
 	}
 
 	public String getName () {
