@@ -4,20 +4,20 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:padding="5dp"
     app:cardCornerRadius="5dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:tools="http://schemas.android.com/tools"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:clipChildren="false"
-                  android:clipToPadding="false"
-                  android:orientation="vertical"
-                  tools:ignore="HardcodedText">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        tools:ignore="HardcodedText">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,11 +26,13 @@
 
             <ImageView
                 android:id="@+id/appointmentHistoryCollapsed_imageView_profilePicture"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:contentDescription="profile picture"
                 android:padding="5dp"
+                android:maxWidth="150dp"
+                android:maxHeight="150dp"
                 android:src="@mipmap/identity"/>
 
             <LinearLayout
@@ -61,20 +63,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/patientAppointmentHistoryCollapsed_button_bookAppointment"
-                    style="?buttonBarNegativeButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="Book Appointment"/>
+            <Button
+                android:id="@+id/patientAppointmentHistoryCollapsed_button_bookAppointment"
+                style="?buttonBarNegativeButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Book Appointment"/>
+
             <Button
                 android:id="@+id/appointmentHistoryCollapsed_button_viewProfile"
                 style="?buttonBarNegativeButtonStyle"
                 android:layout_width="0dp"
-                android:layout_gravity="center"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="View Profile"/>

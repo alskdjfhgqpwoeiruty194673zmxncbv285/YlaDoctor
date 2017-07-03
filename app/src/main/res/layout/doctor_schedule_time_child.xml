@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/doctor_appointment_history_collapsed"
+             android:id="@+id/include"/>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayout">
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/doctorScheduleTimeChild_imageView_approve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/approve"
+        android:layout_alignEnd="@+id/include"
+        android:elevation="2dp"
+        android:layout_alignTop="@+id/include"/>
+</RelativeLayout>

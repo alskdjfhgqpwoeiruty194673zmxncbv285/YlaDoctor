@@ -36,6 +36,7 @@ public abstract class FederatedIdentityLoginHandler extends GeneralLoginHandler 
 
 				} else {
 					generalLogInHandlerInterface.OnLogInIsFailed();
+					task.getException().printStackTrace();
 				}
 			}
 		});

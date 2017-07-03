@@ -15,6 +15,7 @@ import com.kareem.yladoctor.Models.Helpers.FirebaseListener;
 import com.kareem.yladoctor.Models.Interfaces.FirebaseListeners;
 import com.kareem.yladoctor.Models.Modules.AppointmentHistories.AppointmentHistory;
 import com.kareem.yladoctor.Models.Modules.User.Businesses.Individuals.Doctor;
+import com.kareem.yladoctor.Models.Modules.User.Businesses.Individuals.Patient;
 import com.kareem.yladoctor.Models.Modules.User.User;
 import com.kareem.yladoctor.R;
 import com.kareem.yladoctor.ViewModels.Engine.DefaultApplicationLanguageManager;
@@ -99,7 +100,7 @@ public abstract class MedicalHistoryViewHolder extends RecyclerView.ViewHolder i
 
 	private void setFeedback ( String feedbackWords ) {
 
-		feedback.setText(feedbackWords == null || feedbackWords.trim().isEmpty() ? "No feedback is given yet" : feedbackWords);
+		feedback.setText(feedbackWords);
 	}
 
 	private void setRate ( float rating ) {
@@ -135,7 +136,7 @@ public abstract class MedicalHistoryViewHolder extends RecyclerView.ViewHolder i
 		switch (accountType) {
 			case DOCTOR:
 				Doctor doctor = dataSnapshot.getValue(Doctor.class);
-				initializePersonalData(doctor.getProfilePicture().getURL(),doctor.getNames().get(DefaultApplicationLanguageManager.getDefaultLanguage(context)));
+				initializePersonalData(doctor.getProfilePicture().getURL(), doctor.getNames().get(String.valueOf(DefaultApplicationLanguageManager.getDefaultLanguage(context))));
 		}
 	}
 

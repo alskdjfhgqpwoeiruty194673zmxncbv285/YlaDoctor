@@ -1,6 +1,7 @@
 package com.kareem.yladoctor.Views.Activites.patients;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -64,6 +65,6 @@ public class MedicalFields extends AppCompatActivity implements RecyclerAdapterL
 	@Override
 	public void onMedicalFieldIsSelected ( String UID ) {
 		((MainApplication) this.getApplication()).setUnkownObject(UID);
-//		startActivity(new Intent(this, MedicalFieldListOfDoctors.class));
+		startActivity(new Intent(this, ListOfDoctorsInMedicalField.class));
 	}
 }

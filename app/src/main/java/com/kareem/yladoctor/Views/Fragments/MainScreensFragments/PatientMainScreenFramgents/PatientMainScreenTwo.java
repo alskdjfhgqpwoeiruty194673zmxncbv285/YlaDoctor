@@ -41,6 +41,7 @@ public class PatientMainScreenTwo extends Fragment implements View.OnClickListen
 	private final String Home = "Home";
 	private final String Settings = "Settings";
 	private final String SignOut = "SignOut";
+//	private View view;
 
 	@OnClick(R.id.patientMainViewTwo_ImageButton_settings)
 	public void onSettingsClicked () {
@@ -51,6 +52,27 @@ public class PatientMainScreenTwo extends Fragment implements View.OnClickListen
 	TextView name;
 	@BindView(R.id.patientMainViewTwo_imageView_personalImage)
 	ImageView profilePicture;
+
+	@OnClick(R.id.patientMainViewTwo_linearLayout_mentalIllness)
+	public void onMentalIllnessClicked () {
+
+	}
+
+	@OnClick(R.id.patientMainViewTwo_linearLayout_physicalIllness)
+	public void onPhysicalIllnessClicked () {
+
+	}
+
+	@OnClick(R.id.patientMainViewTwo_linearLayout_regularIllness)
+	public void onRegularIllnessClicked () {
+
+	}
+
+	@OnClick(R.id.patientMainViewTwo_linearLayout_surgeries)
+	public void onSurgeriesClicked () {
+
+	}
+
 	ResideMenu resideMenu;
 
 	@Nullable
@@ -63,14 +85,16 @@ public class PatientMainScreenTwo extends Fragment implements View.OnClickListen
 	public void onViewCreated ( View view, @Nullable Bundle savedInstanceState ) {
 		super.onViewCreated(view, savedInstanceState);
 		ButterKnife.bind(this, view);
+//		this.view = view;
 		Patient patient = (Patient) ((MainApplication) this.getActivity().getApplication()).getUser();
-		name.setText(patient.getName()==null||patient.getName().trim().isEmpty()?"Hi There :)":patient.getName());
-		if (patient.getProfilePicture()!=null)
-		Glide.with(this.getActivity()).load(patient.getProfilePicture().getURL()).into(profilePicture);
+		name.setText(patient.getName() == null || patient.getName().trim().isEmpty() ? "Hi There :)" : patient.getName());
+		if (patient.getProfilePicture() != null)
+			Glide.with(this.getActivity()).load(patient.getProfilePicture().getURL()).into(profilePicture);
 
 		resideMenu = new ResideMenu(this.getActivity());
-		resideMenu.attachToActivity(this.getActivity());
+		resideMenu.setMinimumHeight(view.getHeight() + 100);
 		resideMenu.setBackground(R.mipmap.logo);
+		resideMenu.attachToActivity(this.getActivity());
 
 		// create menu items;
 		String titles[] = { Home, Settings, SignOut };
@@ -87,6 +111,7 @@ public class PatientMainScreenTwo extends Fragment implements View.OnClickListen
 			resideMenu.addMenuItem(item, ResideMenu.DIRECTION_LEFT); // or  ResideMenu.DIRECTION_RIGHT
 
 		}
+
 		resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
 		resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_LEFT);
 	}
@@ -99,7 +124,11 @@ public class PatientMainScreenTwo extends Fragment implements View.OnClickListen
 				((MainPage) PatientMainScreenTwo.this.getActivity()).convertViewToHomeFramgents();
 				break;
 			case Settings:
-				((MainPage) PatientMainScreenTwo.this.getActivity()).convertViewToSettingsFramgents();
+//				((MainPage) PatientMainScreenTwo.this.getActivity()).convertViewToSettingsFramgents();
+//				String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//				FirebaseDatabase.getInstance().getReference().child(FirebaseContracts.PATH_TO_APPOINTMENTHISTORYIDENTIFIER).child(UID).child(UID).setValue(new AppointmentHistoryIdentifier(UID, UID));
+//				FirebaseDatabase.getInstance().getReference().child(FirebaseContracts.PATH_TO_APPOINTMENTHISTORY).child(UID).setValue(new AppointmentHistory(UID, UID, "31/1/1996", "KnY8ndP5zW3CjaTdaLe", "2:59"));
+//				FirebaseAuth.getInstance().getCurrentUser().updateProfile(new UserProfileChangeRequest.Builder().setDisplayName("kareem").build());
 				break;
 			case SignOut:
 				GeneralLoginHandler.getUserSignOut();

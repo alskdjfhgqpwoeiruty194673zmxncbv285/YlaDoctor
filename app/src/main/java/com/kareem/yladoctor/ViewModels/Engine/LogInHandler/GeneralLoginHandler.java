@@ -76,7 +76,7 @@ public abstract class GeneralLoginHandler implements FirebaseListeners, newValue
 	}
 
 	private void WriteUserTypeOnMainApplication ( AccountType accountType ) {
-		((MainApplication) generalLogInHandlerInterface.getAppCompatActivity().getApplication()).setUser(UserAccountTypeManager.createUserAccordingToUserAccountType(getFirebaseUser().getUid(), accountType));
+		((MainApplication) generalLogInHandlerInterface.getAppCompatActivity().getApplication()).setUser(UserAccountTypeManager.createUserAccordingToUserAccountType(getFirebaseUser(), accountType));
 	}
 
 	private void WriteUserAccountOnDatabase ( AccountType accountType ) {

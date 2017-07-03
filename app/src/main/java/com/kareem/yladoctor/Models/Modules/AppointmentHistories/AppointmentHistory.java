@@ -14,16 +14,17 @@ package com.kareem.yladoctor.Models.Modules.AppointmentHistories;
  */
 
 public class AppointmentHistory {
-	private String duid, puid, date, field, time;
+	private String duid, puid, date, field, time, condition;
 	private Review PReview;
 	private Review DReview;
 
-	public AppointmentHistory ( String duid, String puid, String date, String field, String time ) {
+	public AppointmentHistory ( String duid, String puid, String date, String field, String time, String condition ) {
 		this.duid = duid;
 		this.puid = puid;
 		this.date = date;
 		this.field = field;
 		this.time = time;
+		this.condition = condition;
 	}
 
 	public AppointmentHistory () {
@@ -83,5 +84,13 @@ public class AppointmentHistory {
 
 	public void setDuid ( String duid ) {
 		this.duid = duid;
+	}
+
+	public String getCondition () {
+		return condition;
+	}
+
+	public void setCondition ( String condition ) {
+		this.condition = condition;
 	}
 }

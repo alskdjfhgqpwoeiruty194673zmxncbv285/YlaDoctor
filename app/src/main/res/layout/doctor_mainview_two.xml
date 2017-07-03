@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2016. kareem elsayed aly,no one has the authority to edit,delete,copy any part without my permission
+  -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/color_identity">
+
+    <include layout="@layout/general_business_schedule"/>
+</FrameLayout>

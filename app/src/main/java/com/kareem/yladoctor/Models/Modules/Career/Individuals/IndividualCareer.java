@@ -25,12 +25,15 @@ public class IndividualCareer {
 	private double rate;
 	//number of received votes
 	private int votes;
+	//appointments needs approval
+	private boolean needsApproval;
 
-	public IndividualCareer ( HashMap<String, String> businessLocations, String businessMobileNumber, double rate, int votes ) {
+	public IndividualCareer ( HashMap<String, String> businessLocations, String businessMobileNumber, double rate, int votes, boolean needsApproval ) {
 		this.businessLocations = businessLocations;
 		this.businessMobileNumber = businessMobileNumber;
 		this.rate = rate;
 		this.votes = votes;
+		this.needsApproval = needsApproval;
 	}
 
 	/**
@@ -69,5 +72,13 @@ public class IndividualCareer {
 
 	public void setVotes ( int votes ) {
 		this.votes = votes;
+	}
+
+	public boolean isNeedsApproval () {
+		return needsApproval;
+	}
+
+	public void setNeedsApproval ( boolean needsApproval ) {
+		this.needsApproval = needsApproval;
 	}
 }

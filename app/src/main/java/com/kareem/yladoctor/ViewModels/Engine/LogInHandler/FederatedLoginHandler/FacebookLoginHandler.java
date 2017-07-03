@@ -52,6 +52,7 @@ public class FacebookLoginHandler extends FederatedIdentityLoginHandler {
 			@Override
 			public void onError ( FacebookException error ) {
 				generalLogInHandlerInterface.OnLogInIsFailed();
+				error.printStackTrace();
 			}
 		});
 	}

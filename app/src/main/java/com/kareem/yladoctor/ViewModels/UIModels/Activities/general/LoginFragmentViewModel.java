@@ -3,9 +3,9 @@ package com.kareem.yladoctor.ViewModels.UIModels.Activities.general;
 import android.support.annotation.NonNull;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.kareem.yladoctor.MainApplication;
 import com.kareem.yladoctor.Models.Enums.AccountType;
-import com.kareem.yladoctor.Models.Modules.User.User;
 import com.kareem.yladoctor.ViewModels.Engine.LogInHandler.GeneralLoginHandler;
 import com.kareem.yladoctor.ViewModels.Engine.LogInHandler.LoginUserManager;
 import com.kareem.yladoctor.ViewModels.Engine.UserAccountTypeManager;
@@ -26,6 +26,7 @@ public class LoginFragmentViewModel {
 
 	public LoginFragmentViewModel ( LoginUserManager loginUserManager ) {
 		this.loginUserManager = loginUserManager;
+//		FirebaseAuth.getInstance().signOut();
 		initializeStartingPointForAlreadyLoggedInOrNeedToLogIn();
 	}
 
@@ -34,7 +35,7 @@ public class LoginFragmentViewModel {
 		if (GeneralLoginHandler.checkForUserAlreadySignedIn()) {
 			AccountType accountType = UserAccountTypeManager.getAccountType(loginUserManager.getAppCompatActivity());
 			if (accountType != AccountType.UNKNOWN) {
-				((MainApplication) loginUserManager.getAppCompatActivity().getApplication()).setUser(UserAccountTypeManager.createUserAccordingToUserAccountType(GeneralLoginHandler.getFirebaseUser().getUid(), accountType));
+				((MainApplication) loginUserManager.getAppCompatActivity().getApplication()).setUser(UserAccountTypeManager.createUserAccordingToUserAccountType(GeneralLoginHandler.getFirebaseUser(), accountType));
 				loginUserManager.onLogInCompleted();
 			} else {
 				GeneralLoginHandler.getUserSignOut();

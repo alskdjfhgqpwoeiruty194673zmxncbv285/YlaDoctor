@@ -40,9 +40,17 @@ public class IndividualBusiness extends User {
 
 	public IndividualBusiness ( AccountType accountType, FirebaseUser firebaseUser ) {
 		super(accountType, firebaseUser);
-		this.profilePicture = new Picture(firebaseUser.getPhotoUrl().toString());
-		this.names.put(FirebaseContracts.ENGLISH, firebaseUser.getDisplayName());
-		this.mobileNumber = firebaseUser.getPhoneNumber();
+		if (firebaseUser != null) {
+			if (firebaseUser.getPhotoUrl() != null)
+				this.profilePicture = new Picture(firebaseUser.getPhotoUrl().toString());
+			if (firebaseUser.getDisplayName() != null) {
+				if (names == null)
+					names = new HashMap<>();
+				this.names.put(FirebaseContracts.ENGLISH, firebaseUser.getDisplayName());
+			}
+			if (firebaseUser.getPhoneNumber() != null)
+				this.mobileNumber = firebaseUser.getPhoneNumber();
+		}
 	}
 
 	public IndividualBusiness () {

@@ -66,6 +66,10 @@ dependencies {
     //this this that can extend and collapse when pressed
     compile 'com.ramotion.foldingcell:folding-cell:1.0.0'
     testCompile 'junit:junit:4.12'
+    //my library created to create infinite expandable list view
+    compile 'com.github.kareemElsayedDEV:InfiniteExpandableList:0.1.0'
+    //for google maps
+    compile 'com.google.android.gms:play-services-maps:11.0.1'
     //butterKnife compiler
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
 }

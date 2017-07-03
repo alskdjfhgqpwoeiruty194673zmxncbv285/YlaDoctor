@@ -29,16 +29,22 @@ public class DoctorMedicalHistoryViewHolder extends MedicalHistoryViewHolder {
 
 	@Override
 	public String extractUID ( AppointmentHistory appointmentHistory ) {
-		return appointmentHistory.getPuid();
+		if (appointmentHistory != null)
+			return appointmentHistory.getPuid();
+		return "";
 	}
 
 	@Override
 	public float extractRate ( AppointmentHistory appointmentHistory ) {
-		return appointmentHistory.getDReview().getRate();
+		if (appointmentHistory != null && appointmentHistory.getDReview() != null)
+			return appointmentHistory.getDReview().getRate();
+		return 0;
 	}
 
 	@Override
 	public String extractFeedback ( AppointmentHistory appointmentHistory ) {
-		return appointmentHistory.getDReview().getDesc();
+		if (appointmentHistory != null && appointmentHistory.getDReview() != null)
+			return appointmentHistory.getDReview().getDesc();
+		return "Not Written yet";
 	}
 }

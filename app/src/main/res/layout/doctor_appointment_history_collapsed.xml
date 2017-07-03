@@ -26,11 +26,13 @@
 
             <ImageView
                 android:id="@+id/appointmentHistoryCollapsed_imageView_profilePicture"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:contentDescription="profile picture"
                 android:padding="5dp"
+                android:maxWidth="150dp"
+                android:maxHeight="150dp"
                 android:src="@mipmap/identity"/>
 
             <LinearLayout

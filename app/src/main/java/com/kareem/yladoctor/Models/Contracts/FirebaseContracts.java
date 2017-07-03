@@ -62,9 +62,9 @@ public class FirebaseContracts {
 	public static final String PATH_TO_HEALTHINSURANCECOMPANIES_HEALTHINSURANCECOMPANIESID_NAMES_ARABIC = "Arabic";
 	public static final String PATH_TO_HEALTHINSURANCECOMPANIES_HEALTHINSURANCECOMPANIESID_NAMES_ENGLISH = "English";
 
-	public static final String PATH_TO_HISTORYIDENTIFIER = "historyIdentifier";
-	public static final String PATH_TO_HISTORYIDENTIFIER_USERUID_SAVEDID_ID = "id";
-	public static final String PATH_TO_HISTORYIDENTIFIER_USERUID_SAVEDID_UID = "uid";
+	public static final String PATH_TO_APPOINTMENTHISTORYIDENTIFIER = "appointmentHistoryIdentifier";
+	public static final String PATH_TO_APPOINTMENTHISTORYIDENTIFIER_USERUID_SAVEDID_ID = "id";
+	public static final String PATH_TO_APPOINTMENTHISTORYIDENTIFIER_USERUID_SAVEDID_UID = "uid";
 
 	public static final String PATH_TO_APPOINTMENTHISTORY = "appointmentHistory";
 	public static final String PATH_TO_APPOINTMENTHISTORY_SAVEDID_DATE = "date";
@@ -77,6 +77,24 @@ public class FirebaseContracts {
 	public static final String PATH_TO_APPOINTMENTHISTORY_SAVEDID_VOTE = "vote";
 	public static final String PATH_TO_APPOINTMENTHISTORY_SAVEDID_REVIEWOWNER_RATE = "rate";
 	public static final String PATH_TO_APPOINTMENTHISTORY_SAVEDID_REVIEWOWNER_DESC = "desc";
+
+	public static final String PATH_TO_SCHEDULEIDENTIFIER = "scheduleIdentifier";
+	public static final String PATH_TO_SCHEDULEIDENTIFIER_USERSUID_DAYUID_GENERATEDUID_UID = "UID";
+	public static final String PATH_TO_SCHEDULEIDENTIFIER_USERSUID_DAYUID_GENERATEDUID_start = "start";
+	public static final String PATH_TO_SCHEDULEIDENTIFIER_USERSUID_DAYUID_GENERATEDUID_END = "end";
+
+
+	public static final String PATH_TO_SCHEDULE = "schedule";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION = "condition";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NOVALUE = "noValue";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_DONE = "done";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_CANCELLED = "cancelled";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NEEDAPPROVAL = "needApproval";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NOTAPPROVED = "notApproved";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_APPROVEDANDNEEDRELEASING = "approvedAndNeedReleasing";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_DATE = "date";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_TIME = "time";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_UID = "uid";
 
 	public static final String PATH_TO_GeoFireLocation = "geoFireLocation";
 

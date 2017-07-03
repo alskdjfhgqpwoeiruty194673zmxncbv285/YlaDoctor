@@ -22,4 +22,5 @@ public class ContractValues {
 	/*****************************************************/
 	public static final String FILE_SETTINGS = "fileSettings";
 	/*****************************************************/
+	public static final String dashedTextColor = "#FFFF1A";
 }

@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class DoctorIndividualCareer extends IndividualCareer {
 	//if the doctor received the verification from us or not
-	private boolean verifiedDoctor;
+	private boolean activatedDoctor;
 	//present experience in number of years
 	private int experienceYears;
 	// price of the doctor
@@ -24,9 +24,9 @@ public class DoctorIndividualCareer extends IndividualCareer {
 	private String fieldID;
 	private String[] listOfHealthInsuranceCompanies;
 
-	public DoctorIndividualCareer ( HashMap<String, String> businessLocations, String businessMobileNumber, double rate, int votes, boolean verifiedDoctor, int experienceYears, int price, int interval, String fieldID, String[] listOfHealthInsuranceCompanies ) {
-		super(businessLocations, businessMobileNumber, rate, votes);
-		this.verifiedDoctor = verifiedDoctor;
+	public DoctorIndividualCareer ( HashMap<String, String> businessLocations, String businessMobileNumber, double rate, int votes, boolean activatedDoctor, int experienceYears, int price, int interval, String fieldID, String[] listOfHealthInsuranceCompanies, boolean needsApproval ) {
+		super(businessLocations, businessMobileNumber, rate, votes, needsApproval);
+		this.activatedDoctor = activatedDoctor;
 		this.experienceYears = experienceYears;
 		this.price = price;
 		this.interval = interval;
@@ -40,12 +40,12 @@ public class DoctorIndividualCareer extends IndividualCareer {
 	public DoctorIndividualCareer () {
 	}
 
-	public boolean isVerifiedDoctor () {
-		return verifiedDoctor;
+	public boolean isActivatedDoctor () {
+		return activatedDoctor;
 	}
 
-	public void setVerifiedDoctor ( boolean verifiedDoctor ) {
-		this.verifiedDoctor = verifiedDoctor;
+	public void setActivatedDoctor ( boolean activatedDoctor ) {
+		this.activatedDoctor = activatedDoctor;
 	}
 
 	public int getExperienceYears () {

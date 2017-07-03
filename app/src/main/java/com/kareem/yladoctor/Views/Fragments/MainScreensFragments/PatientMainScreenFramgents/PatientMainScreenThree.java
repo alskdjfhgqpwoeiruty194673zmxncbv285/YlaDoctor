@@ -49,7 +49,7 @@ public class PatientMainScreenThree extends Fragment implements RecyclerAdapterL
 	@Nullable
 	@Override
 	public View onCreateView ( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
-		return inflater.inflate(R.layout.general_recyclerview_listofdata, container, false);
+		return inflater.inflate(R.layout.patient_mainview_three, container, false);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class PatientMainScreenThree extends Fragment implements RecyclerAdapterL
 			Log.e(CLASS_TAG, e.getMessage());
 		}
 		recyclerAdapter = new RecyclerAdapter<>(this);
-		recyclerAdapter.initRecyclerAdapterListener(null, (RecyclerView) view.findViewById(R.id.generalRecyclerViewListOfData_recyclerView_listOfItems), AppointmentHistoryIdentifier.class, PatientMedicalHistoryViewHolder.class, R.layout.patient_appointment_history_item, recyclerAdapter.getReference().child(FirebaseContracts.PATH_TO_HISTORYIDENTIFIER).child(patient.getUID()).limitToFirst(10), FirebaseContracts.PATH_TO_HISTORYIDENTIFIER);
+		recyclerAdapter.initRecyclerAdapterListener(null, (RecyclerView) view.findViewById(R.id.generalRecyclerViewListOfData_recyclerView_listOfItems), AppointmentHistoryIdentifier.class, PatientMedicalHistoryViewHolder.class, R.layout.patient_appointment_history_item, recyclerAdapter.getReference().child(FirebaseContracts.PATH_TO_APPOINTMENTHISTORYIDENTIFIER).child(patient.getUID()).limitToFirst(10), FirebaseContracts.PATH_TO_APPOINTMENTHISTORYIDENTIFIER);
 	}
 
 
@@ -82,7 +82,7 @@ public class PatientMainScreenThree extends Fragment implements RecyclerAdapterL
 		if (dataSnapshot != null && dataSnapshot.getValue() != null) {
 			final PatientMedicalHistoryViewHolder patientMedicalHistoryViewHolder = (PatientMedicalHistoryViewHolder) data;
 			switch (ID) {
-				case FirebaseContracts.PATH_TO_HISTORYIDENTIFIER:
+				case FirebaseContracts.PATH_TO_APPOINTMENTHISTORYIDENTIFIER:
 					AppointmentHistory appointmentHistory = dataSnapshot.getValue(AppointmentHistory.class);
 					patientMedicalHistoryViewHolder.initializeItem(PatientMainScreenThree.this.getActivity(), appointmentHistory);
 					break;
@@ -98,11 +98,11 @@ public class PatientMainScreenThree extends Fragment implements RecyclerAdapterL
 	@Override
 	public void recyclerAdapterListener ( Object data, RecyclerView.ViewHolder viewHolder, Object holder, int position, String ID ) {
 		switch (ID) {
-			case FirebaseContracts.PATH_TO_HISTORYIDENTIFIER:
+			case FirebaseContracts.PATH_TO_APPOINTMENTHISTORYIDENTIFIER:
 				PatientMedicalHistoryViewHolder patientMedicalHistoryViewHolder = (PatientMedicalHistoryViewHolder) viewHolder;
 				AppointmentHistoryIdentifier appointmentHistoryIdentifier = (AppointmentHistoryIdentifier) holder;
 
-				new FirebaseListener(this).initSingleValueEventListener(patientMedicalHistoryViewHolder, FirebaseContracts.PATH_TO_APPOINTMENTHISTORY + "/" + appointmentHistoryIdentifier.getID(), FirebaseContracts.PATH_TO_HISTORYIDENTIFIER);
+				new FirebaseListener(this).initSingleValueEventListener(patientMedicalHistoryViewHolder, FirebaseContracts.PATH_TO_APPOINTMENTHISTORY + "/" + appointmentHistoryIdentifier.getID(), FirebaseContracts.PATH_TO_APPOINTMENTHISTORYIDENTIFIER);
 				break;
 		}
 	}

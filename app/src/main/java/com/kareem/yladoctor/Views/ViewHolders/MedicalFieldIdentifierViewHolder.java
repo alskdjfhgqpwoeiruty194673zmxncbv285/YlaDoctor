@@ -7,8 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kareem.yladoctor.Models.Contracts.FirebaseContracts;
+import com.kareem.yladoctor.Models.Enums.DefaultLanguages;
 import com.kareem.yladoctor.Models.Modules.Fields.MedicalFieldIdentifier;
 import com.kareem.yladoctor.R;
+import com.kareem.yladoctor.ViewModels.Engine.DefaultApplicationLanguageManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,7 +39,7 @@ public class MedicalFieldIdentifierViewHolder extends RecyclerView.ViewHolder {
 
 	@OnClick(R.id.doctorMedicalFieldItem_linearLayout_container)
 	public void onTotalItemClicked () {
-medicalFieldIdentifierViewHolderInterface.onMedicalFieldIsSelected(medicalFieldIdentifier.getUID());
+		medicalFieldIdentifierViewHolderInterface.onMedicalFieldIsSelected(medicalFieldIdentifier.getUID());
 	}
 
 	public MedicalFieldIdentifierViewHolder ( View itemView ) {
@@ -47,9 +49,10 @@ medicalFieldIdentifierViewHolderInterface.onMedicalFieldIsSelected(medicalFieldI
 
 	public void setDataToGUI ( MedicalFieldIdentifier medicalFieldIdentifier, MedicalFieldIdentifierViewHolderInterface medicalFieldIdentifierViewHolderInterface ) {
 		this.medicalFieldIdentifierViewHolderInterface = medicalFieldIdentifierViewHolderInterface;
-		this.medicalFieldIdentifier=medicalFieldIdentifier;
-		name.setText(medicalFieldIdentifier.getNames().get(FirebaseContracts.ARABIC));
-		description.setText(medicalFieldIdentifier.getDescriptions().get(FirebaseContracts.ARABIC));
+		this.medicalFieldIdentifier = medicalFieldIdentifier;
+		String defaultLanguages = String.valueOf(DefaultApplicationLanguageManager.getDefaultLanguage(medicalFieldIdentifierViewHolderInterface.getMyContext()));
+		name.setText(medicalFieldIdentifier.getNames().get(defaultLanguages));
+		description.setText(medicalFieldIdentifier.getDescriptions().get(defaultLanguages));
 		numberOfDoctors.setText(medicalFieldIdentifier.getNumberOfDoctors() + "");
 //		if (!medicalFieldIdentifier.getURL().isEmpty()&&!medicalFieldIdentifier.getURL().equals(""))
 //		Glide.with(medicalFieldIdentifierViewHolderInterface.getMyContext()).load(medicalFieldIdentifier.getURL()).into(icon);

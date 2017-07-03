@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2016. kareem elsayed aly,no one has the authority to edit,delete,copy any part without my permission
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/color_identity">
+    <TextView
+        android:id="@+id/generalBusinessSchedule_textView_noAssignedScheduleWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="No Assigned Schedule For this week yet"/>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_identity">
+
+    <LinearLayout
+        android:id="@+id/generalBusinessSchedule_linearLayout_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+</ScrollView>
+</LinearLayout>

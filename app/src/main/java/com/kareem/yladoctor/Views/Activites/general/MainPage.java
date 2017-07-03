@@ -16,9 +16,9 @@ import android.widget.LinearLayout;
 import com.kareem.yladoctor.MainApplication;
 import com.kareem.yladoctor.R;
 import com.kareem.yladoctor.Views.Adapters.GeneralPagerAdapter;
+import com.kareem.yladoctor.Views.Fragments.MainScreensFragments.DoctorMainScreenFragments.DoctorMainViewTwoBusinessSchedule;
 import com.kareem.yladoctor.Views.Fragments.MainScreensFragments.DoctorMainScreenFragments.DoctorMainScreenOne;
 import com.kareem.yladoctor.Views.Fragments.MainScreensFragments.DoctorMainScreenFragments.DoctorMainScreenThree;
-import com.kareem.yladoctor.Views.Fragments.MainScreensFragments.DoctorMainScreenFragments.DoctorMainScreenTwo;
 import com.kareem.yladoctor.Views.Fragments.MainScreensFragments.PatientMainScreenFramgents.PatientMainScreenOne;
 import com.kareem.yladoctor.Views.Fragments.MainScreensFragments.PatientMainScreenFramgents.PatientMainScreenThree;
 import com.kareem.yladoctor.Views.Fragments.MainScreensFragments.PatientMainScreenFramgents.PatientMainScreenTwo;
@@ -74,7 +74,7 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
 				listOfData.add(new PatientMainScreenThree());
 				break;
 			case DOCTOR:
-				listOfData.add(new DoctorMainScreenTwo());
+				listOfData.add(new DoctorMainViewTwoBusinessSchedule());
 				listOfData.add(new DoctorMainScreenOne());
 				listOfData.add(new DoctorMainScreenThree());
 				break;
@@ -140,6 +140,6 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
 	}
 
 	public void convertViewToSettingsFramgents () {
-
+// TODO: 7/3/2017  create settings change view in the same viewpager
 	}
 }

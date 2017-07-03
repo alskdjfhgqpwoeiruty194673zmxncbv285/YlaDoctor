@@ -47,9 +47,12 @@ public class Individual extends User {
 
 	public Individual ( AccountType accountType, FirebaseUser firebaseUser ) {
 		super(accountType, firebaseUser);
-		this.profilePicture = new Picture(firebaseUser.getPhotoUrl().toString());
-		this.name = firebaseUser.getDisplayName();
-		this.mobileNumber = firebaseUser.getPhoneNumber();
+		if (firebaseUser!=null) {
+			if (firebaseUser.getPhotoUrl()!=null)
+			this.profilePicture = new Picture(firebaseUser.getPhotoUrl().toString());
+			this.name = firebaseUser.getDisplayName();
+			this.mobileNumber = firebaseUser.getPhoneNumber();
+		}
 	}
 
 	/**

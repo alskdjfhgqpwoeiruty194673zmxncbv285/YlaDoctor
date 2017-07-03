@@ -33,11 +33,15 @@ public class PatientMedicalHistoryViewHolder extends MedicalHistoryViewHolder {
 	}
 	@Override
 	public float extractRate ( AppointmentHistory appointmentHistory ) {
-		return appointmentHistory.getDReview().getRate();
+		if (appointmentHistory != null && appointmentHistory.getPReview() != null)
+			return appointmentHistory.getPReview().getRate();
+		return 0;
 	}
 
 	@Override
 	public String extractFeedback ( AppointmentHistory appointmentHistory ) {
-		return appointmentHistory.getDReview().getDesc();
+		if (appointmentHistory != null && appointmentHistory.getPReview() != null)
+			return appointmentHistory.getPReview().getDesc();
+		return "Not Written yet";
 	}
 }

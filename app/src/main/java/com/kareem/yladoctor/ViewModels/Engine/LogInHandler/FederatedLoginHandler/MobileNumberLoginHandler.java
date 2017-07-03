@@ -3,6 +3,7 @@ package com.kareem.yladoctor.ViewModels.Engine.LogInHandler.FederatedLoginHandle
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.kareem.yladoctor.Models.Dialogs.MobileNumberVerificationDialog;
 import com.kareem.yladoctor.Models.Interfaces.ViewModelsInterfaces.UIEngine.LogInHandler.GeneralLogInHandlerInterface;
 
 import java.util.concurrent.TimeUnit;
@@ -18,9 +19,12 @@ import java.util.concurrent.TimeUnit;
 
 public class MobileNumberLoginHandler extends FederatedIdentityLoginHandler {
 	private String mobileNumber;
-	public MobileNumberLoginHandler ( GeneralLogInHandlerInterface generalLogInHandlerInterface,String mobileNumber ) {
+	private String verificationCode;
+	MobileNumberVerificationDialog mobileNumberVerificationDialog;
+
+	public MobileNumberLoginHandler ( GeneralLogInHandlerInterface generalLogInHandlerInterface, String mobileNumber ) {
 		super(generalLogInHandlerInterface);
-	this.mobileNumber=mobileNumber;
+		this.mobileNumber = mobileNumber;
 	}
 
 	@Override
@@ -42,9 +46,15 @@ public class MobileNumberLoginHandler extends FederatedIdentityLoginHandler {
 
 			@Override
 			public void onCodeSent ( String s, PhoneAuthProvider.ForceResendingToken forceResendingToken ) {
-
+				verificationCode = s;
+				mobileNumberVerificationDialog = new MobileNumberVerificationDialog(generalLogInHandlerInterface.getAppCompatActivity(), MobileNumberLoginHandler.this);
 			}
 		});
+	}
+
+	public void authenticateWithInsertedCode ( String code ) {
+		PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(verificationCode, code);
+		firebaseAuthUsingCredential(phoneAuthCredential);
 	}
 
 	@Override
