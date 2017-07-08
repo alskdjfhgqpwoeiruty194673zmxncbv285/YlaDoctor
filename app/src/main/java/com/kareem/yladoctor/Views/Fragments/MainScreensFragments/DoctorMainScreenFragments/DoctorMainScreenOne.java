@@ -15,16 +15,22 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.MapView;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
 import com.kareem.yladoctor.MainApplication;
 import com.kareem.yladoctor.Models.Contracts.FirebaseContracts;
 import com.kareem.yladoctor.Models.Interfaces.ViewModelsInterfaces.UIModels.GeneralDoctorMainScreenOneInterface;
 import com.kareem.yladoctor.Models.Modules.User.Businesses.Individuals.Doctor;
 import com.kareem.yladoctor.R;
 import com.kareem.yladoctor.ViewModels.UIModels.fragments.general.DoctorMainScreenOneViewModel;
+import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +39,8 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by kareem on 6/16/2017 - YlaDoctor.
@@ -44,7 +52,7 @@ import butterknife.OnClick;
  */
 
 public class DoctorMainScreenOne extends Fragment implements GeneralDoctorMainScreenOneInterface {
-	private static final int locationCode=0;
+	private static final int locationCode = 0;
 	DoctorMainScreenOneViewModel doctorMainScreenOneViewModel;
 	String valueOne;
 	@BindViews({ R.id.doctorMainViewOne_textView_changeBusinessLocation, R.id.doctorMainViewOne_textView_changeMapLocation, R.id.doctorMainViewOne_textView_changeExperience, R.id.doctorMainViewOne_textView_changePrice, R.id.doctorMainViewOne_textView_changeInterval, R.id.doctorMainViewOne_textView_changeHealthInsuranceCompanies, R.id.doctorMainViewOne_textView_changeMobileNumber })
@@ -76,23 +84,37 @@ public class DoctorMainScreenOne extends Fragment implements GeneralDoctorMainSc
 				if (valueOne == null) {
 					valueOne = s;
 					businessLocationLanguage.setText(FirebaseContracts.ARABIC);
-				}
-				else {
+				} else {
 					HashMap<String, String> map = new HashMap<>();
 					map.put(FirebaseContracts.ARABIC, s);
 					map.put(FirebaseContracts.ENGLISH, valueOne);
 					doctorMainScreenOneViewModel.saveData(FirebaseContracts.PATH_TO_USERS_INDIVIDUALBUSINESSUID_CAREER_BUSINESSLOCATIONS, map);
-				businessLocationLanguage.setText(null);
+					businessLocationLanguage.setText(null);
 				}
 
 			} else {
-				if (valueOne==null) {
+				if (valueOne == null) {
 					doctorMainScreenOneViewModel.resetButtons();
 					doctorMainScreenOneViewModel.resetEditTexts();
 					doctorMainScreenOneViewModel.initializeGUI();
 					doctorMainScreenOneViewModel.activateChangeDataEditText(businessLocation, button);
 					businessLocationLanguage.setText(FirebaseContracts.ENGLISH);
 				}
+			}
+		}
+	}
+
+	@Override
+	public void onActivityResult ( int requestCode, int resultCode, Intent data ) {
+		if (resultCode == RESULT_OK) {
+			if (requestCode == locationCode) {
+				Place place = PlacePicker.getPlace(DoctorMainScreenOne.this.getActivity(), data);
+				new GeoFire(FirebaseDatabase.getInstance().getReference().child(FirebaseContracts.PATH_TO_GEOFIRELOCATION)).setLocation(getDoctor().getUID(), new GeoLocation(place.getLatLng().latitude, place.getLatLng().longitude), new GeoFire.CompletionListener() {
+					@Override
+					public void onComplete ( String key, DatabaseError error ) {
+						TastyToast.makeText(DoctorMainScreenOne.this.getActivity(), "Location changed", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+					}
+				});
 			}
 		}
 	}
