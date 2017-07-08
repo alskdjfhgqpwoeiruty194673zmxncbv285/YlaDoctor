@@ -15,36 +15,52 @@ public class FirebaseContracts {
 
 	public static final String PATH_TO_USERS = "users";
 	public static final String PATH_TO_USERS_USERUID_ACCOUNTTYPE = "accountType";
-	public static final String PATH_TO_USERS_USERSUID_EMAIL = "email";
-	public static final String PATH_TO_USERS_USERSUID_NAME = "name";
-	public static final String PATH_TO_USERS_USERSUID_UID = "uid";
-	public static final String PATH_TO_USERS_USERSUID_PASSWORD = "password";
+	public static final String PATH_TO_USERS_USERUID_EMAIL = "email";
+	public static final String PATH_TO_USERS_USERUID_UID = "uid";
+	public static final String PATH_TO_USERS_USERUID_PASSWORD = "password";
 
-	public static final String PATH_TO_USERS_INDIVIDUALSUID_POINTS = "points";
-	public static final String PATH_TO_USERS_INDIVIDUALSUID_ATTACHMENT = "attachment";
-	public static final String PATH_TO_USERS_INDIVIDUALSUID_ATTACHMENT_URL = "URL";
-	public static final String PATH_TO_USERS_INDIVIDUALSUID_ATTACHMENT_NAME = "name";
-	public static final String PATH_TO_USERS_INDIVIDUALSUID_ATTACHMENT_SIZE = "size";
-	public static final String PATH_TO_USERS_INDIVIDUALSUID_ATTACHMENT_ATTACHMENTTYPE = "attachmentType";
+	public static final String PATH_TO_USERS_INDIVIDUALUID_POINTS = "points";
+	public static final String PATH_TO_USERS_INDIVIDUALUID_MOBILENUMBER = "mobileNumber";
+	public static final String PATH_TO_USERS_INDIVIDUALUID_NAME = "name";
+	public static final String PATH_TO_USERS_INDIVIDUALUID_PROFILEPICTURE = "profilePicture";
+	public static final String PATH_TO_USERS_INDIVIDUALUID_PROFILEPICTURE_URL = "URL";
+	public static final String PATH_TO_USERS_INDIVIDUALUID_PROFILEPICTURE_ATTACHMENTTYPE = "attachmentType";
+	public static final String PATH_TO_USERS_INDIVIDUALUID_PROFILEPICTURE_ATTACHMENTNAME = "attachmentName";
+	public static final String PATH_TO_USERS_INDIVIDUALUID_PROFILEPICTURE_ATTACHMENTSIZE = "attachmentSize";
 
-	public static final String PATH_TO_USERS_PATIENTSUID_MOBILENUMBER = "mobileNumber";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_POINTS = "points";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_MOBILENUMBER = "mobileNumber";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_NAMES = "names";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_NAMES_ARABIC = String.valueOf(DefaultLanguages.Arabic);
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_NAMES_ENGLISH = String.valueOf(DefaultLanguages.English);
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_PROFILEPICTURE = "profilePicture";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_PROFILEPICTURE_URL = "URL";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_PROFILEPICTURE_ATTACHMENTTYPE = "attachmentType";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_PROFILEPICTURE_ATTACHMENTNAME = "attachmentName";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_PROFILEPICTURE_ATTACHMENTSIZE = "attachmentSize";
+
 	public static final String PATH_TO_USERS_PATIENTSUID_EMERGENCYMOBILENUMBER = "emergencyMobileNumber";
-	public static final String PATH_TO_USERS_PATIENTSUID_ADDRESS = "address";
-	public static final String PATH_TO_USERS_PATIENTSUID_WITHINSURANCECOMPANY = "withInsuranceCompany";
 
-	public static final String PATH_TO_USERS_USERSUID_CAREER = "career";
-	public static final String PATH_TO_USERS_USERSUID_CAREER_BUSINESSLOCATION = "businessLocation";
-	public static final String PATH_TO_USERS_USERSUID_CAREER_BUSINESSMOBILENUMBER = "businessMobileNumber";
-	public static final String PATH_TO_USERS_USERSUID_CAREER_RATE = "rate";
-	public static final String PATH_TO_USERS_USERSUID_CAREER_VOTES = "votes";
-	public static final String PATH_TO_USERS_USERSUID_DOCTORCAREER_ACCEPTINSURANCEUSERS = "acceptInsuranceUsers";
-	public static final String PATH_TO_USERS_USERSUID_DOCTORCAREER_VERIFIEDDOCTOR = "verifiedDoctor";
-	public static final String PATH_TO_USERS_USERSUID_DOCTORCAREER_EXPERIENCEYEARS = "experienceYears";
-	public static final String PATH_TO_USERS_USERSUID_DOCTORCAREER_PRICE = "price";
-	public static final String PATH_TO_USERS_USERSUID_DOCTORCAREER_INTERVAL = "interval";
-	public static final String PATH_TO_USERS_USERSUID_DOCTORCAREER_FIELDUID = "fieldUID";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_CAREER = "career";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_CAREER_BUSINESSLOCATIONS = "businessLocations";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_CAREER_BUSINESSMOBILENUMBER = "businessMobileNumber";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_CAREER_RATE = "rate";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_CAREER_VOTES = "votes";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_CAREER_NEEDSAPPROVAL = "needsApproval";
+	public static final String PATH_TO_USERS_INDIVIDUALDOCTORUID_DOCTORCAREER_ACTIVATEDDOCTOR = "activatedDoctor";
+	public static final String PATH_TO_USERS_INDIVIDUALDOCTORUID_DOCTORCAREER_EXPERIENCEYEARS = "experienceYears";
+	public static final String PATH_TO_USERS_INDIVIDUALDOCTORUID_DOCTORCAREER_PRICE = "price";
+	public static final String PATH_TO_USERS_INDIVIDUALDOCTORUID_DOCTORCAREER_INTERVAL = "interval";
+	public static final String PATH_TO_USERS_INDIVIDUALDOCTORUID_DOCTORCAREER_FIELDID = "fieldID";
+	public static final String PATH_TO_USERS_INDIVIDUALDOCTORUID_DOCTORCAREER_LISTOFHEALTHINSURANCECOMPANIES
+			  = "listOfHealthInsuranceCompanies";
+
+	//used only for the career factories as communication between factories
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_CAREER_ITEM= "item";
+
 
 	public static final String PATH_TO_MEDICALFIELDSIDENTIFIER = "MedicalFieldsIdentifier";
+	public static final String PATH_TO_MEDICALFIELDSIDENTIFIER_MEDICALFIELDSIDENTIFIERID_NAMES = "names";
 	public static final String PATH_TO_MEDICALFIELDSIDENTIFIER_MEDICALFIELDSIDENTIFIERID_NAMES_ARABIC = "Arabic";
 	public static final String PATH_TO_MEDICALFIELDSIDENTIFIER_MEDICALFIELDSIDENTIFIERID_NAMES_ENGLISH = "English";
 	public static final String PATH_TO_MEDICALFIELDSIDENTIFIER_MEDICALFIELDSIDENTIFIERID_DESCRIPTIONS_ENGLISH = "English";
@@ -96,11 +112,17 @@ public class FirebaseContracts {
 	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_TIME = "time";
 	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_UID = "uid";
 
-	public static final String PATH_TO_GeoFireLocation = "geoFireLocation";
-
 	public static final String ARABIC = String.valueOf(DefaultLanguages.Arabic);
 	public static final String ENGLISH = String.valueOf(DefaultLanguages.English);
 	public static final String PATH_TO_GEOFIRELOCATION = "geoFireLocation";
+
+	public static final String STORAGE_PATH_TO_IMAGES = "images";
+	public static final String STORAGE_PATH_TO_IMAGES_PERSONAL = "personal";
+	public static final String STORAGE_PATH_TO_IMAGES_CHAT = "chat";
+
+	public static final String STORAGE_PATH_TO_FILES = "files";
+	public static final String STORAGE_PATH_TO_FILES_PERSONAL = "personal";
+	public static final String STORAGE_PATH_TO_FILES_CHAT = "chat";
 
 	public static final String PASSWORD = "yladoctor";
 }

@@ -124,11 +124,6 @@ public class PatientMainScreenTwo extends Fragment implements View.OnClickListen
 				((MainPage) PatientMainScreenTwo.this.getActivity()).convertViewToHomeFramgents();
 				break;
 			case Settings:
-//				((MainPage) PatientMainScreenTwo.this.getActivity()).convertViewToSettingsFramgents();
-//				String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//				FirebaseDatabase.getInstance().getReference().child(FirebaseContracts.PATH_TO_APPOINTMENTHISTORYIDENTIFIER).child(UID).child(UID).setValue(new AppointmentHistoryIdentifier(UID, UID));
-//				FirebaseDatabase.getInstance().getReference().child(FirebaseContracts.PATH_TO_APPOINTMENTHISTORY).child(UID).setValue(new AppointmentHistory(UID, UID, "31/1/1996", "KnY8ndP5zW3CjaTdaLe", "2:59"));
-//				FirebaseAuth.getInstance().getCurrentUser().updateProfile(new UserProfileChangeRequest.Builder().setDisplayName("kareem").build());
 				break;
 			case SignOut:
 				GeneralLoginHandler.getUserSignOut();

@@ -2,7 +2,10 @@ package com.kareem.yladoctor.Views.Fragments;
 
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -103,6 +106,7 @@ public class LoginFragment extends Fragment {
 	}
 
 	public void initializeVariables () {
+
 		loginUserManager = new LoginUserManager() {
 			@Override
 			public void onLostConnection () {

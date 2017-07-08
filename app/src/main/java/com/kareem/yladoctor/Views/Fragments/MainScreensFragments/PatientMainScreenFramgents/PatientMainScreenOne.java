@@ -37,7 +37,9 @@ public abstract class PatientMainScreenOne extends Fragment {
 
 	@OnClick(R.id.newGeneralPage2_ImageButton_emergency)
 	public void OnEmergencyClicked () {
-		// TODO: 5/26/2017 add the function of emergency later
+		// TODO: 5/26/2017 add the function of map later
+
+
 	}
 
 	@OnClick(R.id.newGeneralPage2_LinearLayout_history)

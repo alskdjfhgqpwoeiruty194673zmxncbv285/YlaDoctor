@@ -45,7 +45,7 @@ public class ScheduleFactory implements FirebaseListeners {
 				assert newS != null;
 				if (newS.getCondition().equals(FirebaseContracts.PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NOVALUE)) {
 					String value;
-					if (((Doctor) mainApplication.getOtherUser()).getDoctorCareer().isNeedsApproval())
+					if (((Doctor) mainApplication.getOtherUser()).getCareer().isNeedsApproval())
 						value = FirebaseContracts.PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NEEDAPPROVAL;
 					else
 						value = FirebaseContracts.PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_APPROVEDANDNEEDRELEASING;

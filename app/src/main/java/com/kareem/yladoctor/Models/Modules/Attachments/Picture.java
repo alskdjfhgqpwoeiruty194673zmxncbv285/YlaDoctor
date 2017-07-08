@@ -33,10 +33,6 @@ public class Picture extends Attachment {
 		super(URL, AttachmentType.IMAGE, attachmentName, attachmentSize);
 	}
 
-	public Picture ( String URL ) {
-		super(URL);
-	}
-
 	/**
 	 * create picture using offline image and online one
 	 *
@@ -48,6 +44,10 @@ public class Picture extends Attachment {
 	public Picture ( String URL, String attachmentName, String attachmentSize, Bitmap image ) {
 		super(URL, AttachmentType.IMAGE, attachmentName, attachmentSize);
 		this.image = image;
+	}
+
+	public Picture(String URL){
+		super(URL,AttachmentType.IMAGE);
 	}
 
 	/**
@@ -76,6 +76,8 @@ public class Picture extends Attachment {
 	 */
 	public Picture () {
 	}
+
+
 
 	@Exclude
 	public void setImage ( Bitmap image ) {

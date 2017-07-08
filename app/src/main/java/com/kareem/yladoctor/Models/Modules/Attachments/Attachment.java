@@ -37,8 +37,15 @@ public class Attachment {
 		this.attachmentSize = attachmentSize;
 	}
 
-	public Attachment ( String URL ) {
+	/**
+	 * constructor to create new Attachment
+	 *
+	 * @param URL            url of the online Attachment
+	 * @param attachmentType type of that Attachment
+	 */
+	public Attachment ( String URL, AttachmentType attachmentType ) {
 		this.URL = URL;
+		this.attachmentType = attachmentType;
 	}
 
 	/**

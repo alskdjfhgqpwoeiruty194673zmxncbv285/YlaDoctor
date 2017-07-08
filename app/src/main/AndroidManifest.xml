@@ -2,6 +2,7 @@
           package="com.kareem.yladoctor">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <meta-data
         android:name="com.facebook.sdk.ApplicationId"
         android:value="@string/facebook_application_id"/>
@@ -27,6 +28,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".Views.Activites.patients.MedicalFields"/>
         <activity android:name=".Views.Activites.patients.ListOfDoctorsInMedicalField"/>
+        <activity android:name=".Views.Fragments.DoctorViewDoctorProfile"/>
+        <activity android:name=".Views.Fragments.GeneralDoctorProfile"/>
         <!--<activity android:name="com.facebook.FacebookActivity"-->
         <!--android:configChanges=-->
         <!--"keyboard|keyboardHidden|screenLayout|screenSize|orientation"-->

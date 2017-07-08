@@ -3,6 +3,7 @@ package com.kareem.yladoctor.Factories;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kareem.yladoctor.Models.Contracts.FirebaseContracts;
+import com.kareem.yladoctor.Models.Enums.DefaultLanguages;
 import com.kareem.yladoctor.Models.Enums.WeekDays;
 
 /**
@@ -31,8 +32,16 @@ public class DatabasePathFactory {
 		return getReference().child(FirebaseContracts.PATH_TO_SCHEDULEIDENTIFIER).child(UID);
 	}
 
-	public static DatabaseReference pathTo_Business_schedule_DayUID_TimeSlotUID ( String doctorUID,WeekDays day,String timeSlot ) {
+	public static DatabaseReference pathTo_Business_schedule_DayUID_TimeSlotUID ( String doctorUID, WeekDays day, String timeSlot ) {
 		return getReference().child(FirebaseContracts.PATH_TO_SCHEDULE).child(doctorUID).child(day.toString()).child(timeSlot);
-
 	}
+
+	public static DatabaseReference pathTo_GeoFireLocation () {
+		return getReference().child(FirebaseContracts.PATH_TO_GEOFIRELOCATION);
+	}
+
+	public static DatabaseReference pathTo_MedicalFieldIdentifier_FieldUID_Name_Language ( String MedicaFieldUID, String defaultLanguages ) {
+		return getReference().child(FirebaseContracts.PATH_TO_MEDICALFIELDSIDENTIFIER).child(MedicaFieldUID).child(FirebaseContracts.PATH_TO_MEDICALFIELDSIDENTIFIER_MEDICALFIELDSIDENTIFIERID_NAMES).child(defaultLanguages);
+	}
+
 }

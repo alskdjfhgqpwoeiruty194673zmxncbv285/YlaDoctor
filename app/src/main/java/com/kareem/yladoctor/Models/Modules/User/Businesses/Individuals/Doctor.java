@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class Doctor extends IndividualBusiness {
 	//career related with doctor
-	private DoctorIndividualCareer doctorCareer;
+	private DoctorIndividualCareer career;
 
 	public Doctor ( String UID ) {
 		super(AccountType.DOCTOR, UID);
@@ -33,10 +33,10 @@ public class Doctor extends IndividualBusiness {
 		super(AccountType.DOCTOR, firebaseUser);
 	}
 
-	public Doctor ( String email, String password, String UID, HashMap<String, String> names, int points, Picture profilePicture, DoctorIndividualCareer doctorCareer ) {
+	public Doctor ( String email, String password, String UID, HashMap<String, String> names, int points, Picture profilePicture, DoctorIndividualCareer career ) {
 		// account type is selected to be Doctor
 		super(AccountType.DOCTOR, email, password, UID, names, points, profilePicture);
-		this.doctorCareer = doctorCareer;
+		this.career = career;
 	}
 
 	/**
@@ -45,11 +45,11 @@ public class Doctor extends IndividualBusiness {
 	public Doctor () {
 	}
 
-	public DoctorIndividualCareer getDoctorCareer () {
-		return doctorCareer;
+	public DoctorIndividualCareer getCareer () {
+		return career;
 	}
 
-	public void setDoctorCareer ( DoctorIndividualCareer doctorCareer ) {
-		this.doctorCareer = doctorCareer;
+	public void setCareer ( DoctorIndividualCareer career ) {
+		this.career = career;
 	}
 }

@@ -23,4 +23,6 @@ public class ContractValues {
 	public static final String FILE_SETTINGS = "fileSettings";
 	/*****************************************************/
 	public static final String dashedTextColor = "#FFFF1A";
+	/*****************************************************/
+	public static final int ZOOMLEVELMAP = 17;
 }
