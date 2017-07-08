@@ -116,6 +116,9 @@ public class ScheduleFactory implements FirebaseListeners {
 	public void cancelAppointment () {
 		createHistory(FirebaseContracts.PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_CANCELLED);
 	}
+	public void createScheduleFromScheduleIdentifier(){
+
+	}
 
 	@Override
 	public void ValueEventListener ( Object data, DataSnapshot dataSnapshot, String ID ) {
