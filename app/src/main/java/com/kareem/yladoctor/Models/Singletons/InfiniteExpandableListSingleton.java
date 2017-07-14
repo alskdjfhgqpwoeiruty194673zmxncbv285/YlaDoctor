@@ -18,8 +18,9 @@ public class InfiniteExpandableListSingleton extends InfiniteExpandableList {
 
 	public static InfiniteExpandableListSingleton getInstance ( InfiniteExpandableListInterface infiniteExpandableListInterface ) {
 		if (ourInstance == null) {
-			assert infiniteExpandableListInterface != null;
+//			assert infiniteExpandableListInterface != null;
 			ourInstance = new InfiniteExpandableListSingleton(infiniteExpandableListInterface);
+			ourInstance.setPixelsPadding(20,20,20,20);
 		}
 		return ourInstance;
 	}

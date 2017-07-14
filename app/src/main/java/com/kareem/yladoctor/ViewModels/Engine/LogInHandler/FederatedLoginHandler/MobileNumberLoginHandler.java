@@ -3,7 +3,7 @@ package com.kareem.yladoctor.ViewModels.Engine.LogInHandler.FederatedLoginHandle
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.kareem.yladoctor.Models.Dialogs.MobileNumberVerificationDialog;
+import com.kareem.yladoctor.Views.Dialogs.MobileNumberVerificationDialog;
 import com.kareem.yladoctor.Models.Interfaces.ViewModelsInterfaces.UIEngine.LogInHandler.GeneralLogInHandlerInterface;
 
 import java.util.concurrent.TimeUnit;

@@ -19,13 +19,14 @@ import butterknife.OnClick;
  * @version %I%
  */
 
-public class SchedulePatientTimeChildViewHolder extends InfiniteExpandableListViewHolder {
+public class ScheduleItemPatientViewHolder extends InfiniteExpandableListViewHolder {
 	//// TODO: 7/2/2017  request server time from our function
 	private final String dateOfToday = "15/07/2017";
 
 	@OnClick(R.id.patientScheduleTimeChild_button_confirmAppointment)
 	public void OnConfirmAppointmentClicked () {
-		new ScheduleFactory((Schedule) getData(), getView().getContext()).bookAppointment(dateOfToday);
+		// TODO: 7/10/2017 uncomment and fix later
+//		new ScheduleFactory((Schedule) getData(), getView().getContext(),).bookAppointment(dateOfToday);
 	}
 
 	@OnClick(R.id.patientScheduleTimeChild_button_cancelAppointment)
@@ -34,7 +35,7 @@ public class SchedulePatientTimeChildViewHolder extends InfiniteExpandableListVi
 		getView().setVisibility(View.INVISIBLE);
 	}
 
-	public SchedulePatientTimeChildViewHolder ( View view, Object data ) {
+	public ScheduleItemPatientViewHolder ( View view, Object data ) {
 		super(view, data);
 		ButterKnife.bind(this, view);
 	}

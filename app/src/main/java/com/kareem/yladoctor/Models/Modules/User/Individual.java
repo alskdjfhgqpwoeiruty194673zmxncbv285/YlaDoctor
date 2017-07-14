@@ -77,7 +77,7 @@ public class Individual extends User {
 		this.name = name;
 	}
 
-	public long getPoints () {
+	public int getPoints () {
 		return points;
 	}
 

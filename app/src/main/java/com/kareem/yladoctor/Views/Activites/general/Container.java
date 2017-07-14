@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.kareem.yladoctor.Models.Interfaces.ViewModelsInterfaces.UIModels.ContainerInterface;
@@ -46,5 +47,8 @@ public abstract void initializeVariables ();
 	@Override
 	public int getFragmentContainerID () {
 		return R.id.generalActivityContainer_frameLayout_fragmentsContainer;
+	}
+	public static void main(String[]args){
+		Log.e("test","test");
 	}
 }

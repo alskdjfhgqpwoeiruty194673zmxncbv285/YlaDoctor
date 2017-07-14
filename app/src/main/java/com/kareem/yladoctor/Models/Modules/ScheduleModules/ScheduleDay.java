@@ -17,6 +17,7 @@ import java.util.HashMap;
 public class ScheduleDay {
 	private HashMap<String, Schedule> schedules;
 	private WeekDays name;
+	private boolean active=true;
 
 	public ScheduleDay ( HashMap<String, Schedule> schedules, WeekDays name ) {
 		this.schedules = schedules;
@@ -27,12 +28,15 @@ public class ScheduleDay {
 	}
 
 	public Schedule[] listOfSchedules () {
-		ArrayList<Schedule> list = new ArrayList<>();
-		for (Schedule s : schedules.values()) {
-			if (s != null)
-				list.add(s);
+		if (schedules != null) {
+			ArrayList<Schedule> list = new ArrayList<>();
+			for (Schedule s : schedules.values()) {
+				if (s != null)
+					list.add(s);
+			}
+			return (Schedule[]) list.toArray(new Schedule[list.size()]);
 		}
-		return (Schedule[]) list.toArray();
+		return null;
 	}
 
 	public HashMap<String, Schedule> getSchedules () {
@@ -49,5 +53,18 @@ public class ScheduleDay {
 
 	public void setName ( WeekDays name ) {
 		this.name = name;
+	}
+
+	public boolean isActive () {
+		return active;
+	}
+
+	public void setActive ( boolean active ) {
+		this.active = active;
+	}
+	public void addSchedule(Schedule schedule){
+		if (schedules==null)
+			schedules=new HashMap<>();
+		schedules.put(schedule.getID(),schedule);
 	}
 }

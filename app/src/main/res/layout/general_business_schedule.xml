@@ -5,19 +5,20 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="@color/color_identity">
+              android:background="#FFFFFF">
     <TextView
         android:id="@+id/generalBusinessSchedule_textView_noAssignedScheduleWarning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:gravity="center"
+        android:visibility="gone"
+        android:layout_margin="20dp"
         android:padding="5dp"
-        android:text="No Assigned Schedule For this week yet"/>
+        android:text="No Assigned Schedule yet"/>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/color_identity">
+            android:padding="20dp"
+            android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/generalBusinessSchedule_linearLayout_container"

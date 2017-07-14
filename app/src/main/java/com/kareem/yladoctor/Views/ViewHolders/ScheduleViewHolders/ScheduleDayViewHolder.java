@@ -28,15 +28,16 @@ import butterknife.ButterKnife;
  * @version %I%
  */
 
-public class ScheduleDayTimeViewHolder extends InfiniteExpandableListViewHolder {
+public class ScheduleDayViewHolder extends InfiniteExpandableListViewHolder {
 	@BindView(R.id.scheduleItem_imageView_arrowDirection)
 	ImageView arrowDirection;
 	@BindView(R.id.scheduleItem_textView_text)
 	TextView text;
+
 	boolean clickable = true;
 	private AccountType accountType;
 
-	public ScheduleDayTimeViewHolder ( View view, Object data ) {
+	public ScheduleDayViewHolder ( View view, Object data ) {
 		super(view, data);
 		ButterKnife.bind(this, view);
 		if (data instanceof ScheduleDay) {
@@ -44,20 +45,20 @@ public class ScheduleDayTimeViewHolder extends InfiniteExpandableListViewHolder 
 		} else {
 			if (data instanceof Schedule) {
 				Schedule s = (Schedule) data;
-				text.setText(s.getTime());
+				text.setText(s.getScheduleStartTime());
 				switch (UserAccountTypeManager.getAccountType(view.getContext())) {
-					case DOCTOR:
-						accountType = AccountType.DOCTOR;
-						if (s.getCondition()
-								  .equals(FirebaseContracts.PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NOVALUE)) {
-							dashText();
-							clickable = false;
-						}
-						break;
+//					case DOCTOR:
+//						accountType = AccountType.DOCTOR;
+//						if (s.getCondition()
+//								  .equals(FirebaseContracts.PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NOVALUE)) {
+//							dashText();
+//							clickable = false;
+//						}
+//						break;
 					case PATIENT:
 						accountType = AccountType.PATIENT;
 						if (! s.getCondition()
-								  .equals(FirebaseContracts.PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NOVALUE)) {
+								  .equals(FirebaseContracts.PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NOVALUE) || s.getCondition().equals(FirebaseContracts.PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_ONHOLD)) {
 							dashText();
 							clickable = false;
 						}
@@ -78,7 +79,7 @@ public class ScheduleDayTimeViewHolder extends InfiniteExpandableListViewHolder 
 	public void onInfiniteExpandableListViewItemIsExpanding ( Object o, int i, int i1 ) {
 		arrowDirection.setImageResource(R.mipmap.arrow_left);
 		if (getData() instanceof ScheduleDay)
-			InfiniteExpandableListSingleton.getInstance(null).createLevel(((ScheduleDay) getData()).listOfSchedules(), ScheduleDayTimeViewHolder.class, R.layout.general_schedule_item);
+			InfiniteExpandableListSingleton.getInstance(null).createLevel(((ScheduleDay) getData()).listOfSchedules(), ScheduleDayViewHolder.class, R.layout.general_schedule_item);
 		else if (getData() instanceof Schedule && clickable)
 			HandleTimeClicked((Schedule) getData());
 	}
@@ -86,10 +87,10 @@ public class ScheduleDayTimeViewHolder extends InfiniteExpandableListViewHolder 
 	public void HandleTimeClicked ( Schedule schedule ) {
 		switch (accountType) {
 			case DOCTOR:
-				InfiniteExpandableListSingleton.getInstance(null).createLevel(new Schedule[]{ schedule }, ScheduleDoctorTimeChildViewHolder.class, R.layout.doctor_appointment_history_collapsed);
+				InfiniteExpandableListSingleton.getInstance(null).createLevel(new Schedule[]{ schedule }, ScheduleItemDoctorViewHolder.class, R.layout.doctor_appointment_history_collapsed);
 				break;
 			case PATIENT:
-				InfiniteExpandableListSingleton.getInstance(null).createLevel(new Schedule[]{ schedule }, SchedulePatientTimeChildViewHolder.class, R.layout.patient_schedule_time_child);
+				InfiniteExpandableListSingleton.getInstance(null).createLevel(new Schedule[]{ schedule }, ScheduleItemPatientViewHolder.class, R.layout.patient_schedule_time_child);
 				break;
 		}
 

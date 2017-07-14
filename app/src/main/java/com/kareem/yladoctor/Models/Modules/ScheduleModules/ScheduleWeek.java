@@ -1,5 +1,7 @@
 package com.kareem.yladoctor.Models.Modules.ScheduleModules;
 
+import com.kareem.yladoctor.Models.Enums.WeekDays;
+
 import java.util.ArrayList;
 
 /**
@@ -47,6 +49,40 @@ public class ScheduleWeek {
 		if (Friday != null)
 			list.add(Friday);
 		return (ScheduleDay[]) list.toArray();
+	}
+
+
+	public ScheduleDay[] listOfAllDays () {
+		ArrayList<ScheduleDay> list = new ArrayList<>();
+		if (Saturday == null)
+			Saturday = new ScheduleDay(null, WeekDays.Saturday);
+		list.add(Saturday);
+
+		if (Sunday == null)
+			Sunday = new ScheduleDay(null, WeekDays.Sunday);
+		list.add(Sunday);
+
+		if (Monday == null)
+			Monday = new ScheduleDay(null, WeekDays.Monday);
+		list.add(Monday);
+
+		if (Tuesday == null)
+			Tuesday = new ScheduleDay(null, WeekDays.Tuesday);
+		list.add(Tuesday);
+
+		if (Wednesday == null)
+			Wednesday = new ScheduleDay(null, WeekDays.Wednesday);
+		list.add(Wednesday);
+
+		if (Thursday == null)
+			Thursday = new ScheduleDay(null, WeekDays.Thursday);
+		list.add(Thursday);
+
+		if (Friday == null)
+			Friday = new ScheduleDay(null, WeekDays.Friday);
+		list.add(Friday);
+
+		return list.toArray(new ScheduleDay[list.size()]);
 	}
 
 	public ScheduleWeek () {

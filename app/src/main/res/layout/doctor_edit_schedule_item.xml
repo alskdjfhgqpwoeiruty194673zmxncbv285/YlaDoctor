@@ -8,6 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <FrameLayout
@@ -23,6 +25,7 @@
                 app:cardCornerRadius="5dp">
 
                 <Button
+                    android:id="@+id/doctorEditScheduleItem_button_fromTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -44,6 +47,7 @@
                 app:cardCornerRadius="5dp">
 
                 <Button
+                    android:id="@+id/doctorEditScheduleItem_button_toTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -53,6 +57,7 @@
         </FrameLayout>
 
         <ImageView
+            android:id="@+id/doctorEditScheduleItem_imageView_delete"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5dp"

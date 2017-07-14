@@ -3,18 +3,32 @@ package com.kareem.yladoctor.Views.Fragments;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.kareem.yladoctor.Models.Dialogs.LoadingDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.kareem.yladoctor.Factories.DatabasePathFactory;
+import com.kareem.yladoctor.MainApplication;
+import com.kareem.yladoctor.Models.Contracts.FirebaseContracts;
+import com.kareem.yladoctor.Models.Enums.AccountType;
+import com.kareem.yladoctor.Models.Helpers.FirebaseListener;
+import com.kareem.yladoctor.Models.Interfaces.FirebaseListeners;
+import com.kareem.yladoctor.Models.Modules.User.Businesses.Individuals.Doctor;
+import com.kareem.yladoctor.Models.Modules.User.Businesses.Individuals.Patient;
+import com.kareem.yladoctor.Models.Modules.User.User;
+import com.kareem.yladoctor.ViewModels.Engine.UserAccountTypeManager;
+import com.kareem.yladoctor.Views.Dialogs.LoadingDialog;
 import com.kareem.yladoctor.R;
 import com.kareem.yladoctor.ViewModels.Engine.LogInHandler.LoginUserManager;
 import com.kareem.yladoctor.ViewModels.UIModels.Activities.general.LoginFragmentViewModel;
@@ -57,7 +71,7 @@ public class LoginFragment extends Fragment {
 	@Override
 	public void onViewCreated ( View view, @Nullable Bundle savedInstanceState ) {
 		super.onViewCreated(view, savedInstanceState);
-		ButterKnife.bind(this,view);
+		ButterKnife.bind(this, view);
 		initializeVariables();
 	}
 
@@ -126,9 +140,7 @@ public class LoginFragment extends Fragment {
 
 			@Override
 			public void onLogInCompleted () {
-				dismissLoadingDialog();
-				LoginFragment.this.getActivity().startActivity(new Intent(LoginFragment.this.getActivity(), MainPage.class));
-				LoginFragment.this.getActivity().finish();
+				finishLoginProcessAfterGettingUserData();
 			}
 
 			@Override
@@ -147,7 +159,7 @@ public class LoginFragment extends Fragment {
 			@Override
 			public void OnLogInIsFailed () {
 				dismissLoadingDialog();
-				TastyToast.makeText(LoginFragment.this.getActivity(), "Account type couldn't be determined", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+				TastyToast.makeText(LoginFragment.this.getActivity(), "Error occurred", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 			}
 		};
 		loginFragmentViewModel = new LoginFragmentViewModel(loginUserManager);
@@ -157,5 +169,56 @@ public class LoginFragment extends Fragment {
 	public void onStop () {
 		super.onStop();
 		loginUserManager.dismissLoadingDialog();
+	}
+
+	private void finishLoginProcessAfterGettingUserData () {
+		ConnectivityManager connectivityManager = (ConnectivityManager) loginUserManager.getAppCompatActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+		if (networkInfo != null && networkInfo.isConnected()) {
+			new FirebaseListener(new FirebaseListeners() {
+				@Override
+				public void ValueEventListener ( Object data, DataSnapshot dataSnapshot, String ID ) {
+
+				}
+
+				@Override
+				public void SingleValueEventListener ( Object data, DataSnapshot dataSnapshot, String ID ) {
+					loginUserManager.dismissLoadingDialog();
+					if (dataSnapshot.getValue() != null) {
+						User user = null;
+						switch (dataSnapshot.child(FirebaseContracts.PATH_TO_USERS_USERUID_ACCOUNTTYPE).getValue(AccountType.class)) {
+							case DOCTOR:
+								user = dataSnapshot.getValue(Doctor.class);
+								break;
+							case PATIENT:
+								user = dataSnapshot.getValue(Patient.class);
+								break;
+							default:
+								user = dataSnapshot.getValue(User.class);
+						}
+						((MainApplication) loginUserManager.getAppCompatActivity().getApplication()).setUser(user);
+						UserAccountTypeManager.setAccountType(loginUserManager.getAppCompatActivity(), user.getAccountType());
+						startMainViewAndFinishEntryView();
+					} else
+						TastyToast.makeText(loginUserManager.getAppCompatActivity(), "Your data couldn't be retrieved!", TastyToast.LENGTH_LONG, TastyToast.ERROR);
+				}
+
+				@Override
+				public void onFailure ( Object data, Throwable error, String ID ) {
+
+					TastyToast.makeText(loginUserManager.getAppCompatActivity(), error.getMessage(), TastyToast.LENGTH_LONG, TastyToast.ERROR);
+				}
+			}).initSingleValueEventListener(null, DatabasePathFactory.pathTo_User_UserUID(FirebaseAuth.getInstance().getCurrentUser().getUid()), FirebaseContracts.PATH_TO_USERS);
+		} else
+			new AlertDialog.Builder(loginUserManager.getAppCompatActivity()).setTitle("No Available Internet Connection").setCancelable(true).setPositiveButton("Continue anyWay!", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick ( DialogInterface dialog, int which ) {
+					startMainViewAndFinishEntryView();
+				}
+			}).show();
+	}
+	private void startMainViewAndFinishEntryView(){
+		LoginFragment.this.getActivity().startActivity(new Intent(LoginFragment.this.getActivity(), MainPage.class));
+		LoginFragment.this.getActivity().finish();
 	}
 }

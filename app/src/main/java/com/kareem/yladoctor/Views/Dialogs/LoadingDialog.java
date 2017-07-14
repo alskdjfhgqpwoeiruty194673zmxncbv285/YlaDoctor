@@ -2,7 +2,7 @@
  * Copyright (c) $today.year.kareem elsayed aly,no one has the authority to edit,delete,copy any part without my permission
  */
 
-package com.kareem.yladoctor.Models.Dialogs;
+package com.kareem.yladoctor.Views.Dialogs;
 
 import android.app.Dialog;
 import android.content.Context;

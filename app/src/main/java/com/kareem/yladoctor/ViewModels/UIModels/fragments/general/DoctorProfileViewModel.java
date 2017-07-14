@@ -47,39 +47,41 @@ public class DoctorProfileViewModel implements OnMapReadyCallback {
 			generalDoctorProfileInterface.getNameTextView().setText(doctor.getNames().get(defaultLanguage));
 		if (doctor.getProfilePicture() != null)
 			Glide.with(generalDoctorProfileInterface.getMyContext()).load(doctor.getProfilePicture().getURL()).into(generalDoctorProfileInterface.getProfilePicture());
-		if (doctor.getCareer().getBusinessLocations() != null)
-			generalDoctorProfileInterface.getBusinessLocationEditText().setText(doctor.getCareer().getBusinessLocations().get(defaultLanguage));
-		generalDoctorProfileInterface.getMapMapView().onCreate(null);
-		generalDoctorProfileInterface.getMapMapView().getMapAsync(this);
-		generalDoctorProfileInterface.getExperienceEditText().setText(doctor.getCareer().getExperienceYears() + "");
-		generalDoctorProfileInterface.getPriceEditText().setText(doctor.getCareer().getPrice() + "");
-		generalDoctorProfileInterface.getIntervalEditText().setText(doctor.getCareer().getInterval() + "");
-		String healthInsuranceCompaniesInString = "";
-		if (doctor.getCareer().getListOfHealthInsuranceCompanies() != null) {
-			for (String healthInsuranceCompany : doctor.getCareer().getListOfHealthInsuranceCompanies())
-				healthInsuranceCompaniesInString += healthInsuranceCompany + "\n";
-			generalDoctorProfileInterface.getHealthInsuranceCompaniesEditText().setText(healthInsuranceCompaniesInString);
+		if (doctor.getCareer()!=null) {
+			if (doctor.getCareer().getBusinessLocations() != null)
+				generalDoctorProfileInterface.getBusinessLocationEditText().setText(doctor.getCareer().getBusinessLocations().get(defaultLanguage));
+			generalDoctorProfileInterface.getMapMapView().onCreate(null);
+			generalDoctorProfileInterface.getMapMapView().getMapAsync(this);
+			generalDoctorProfileInterface.getExperienceEditText().setText(doctor.getCareer().getExperienceYears() + "");
+			generalDoctorProfileInterface.getPriceEditText().setText(doctor.getCareer().getPrice() + "");
+			generalDoctorProfileInterface.getIntervalEditText().setText(doctor.getCareer().getInterval() + "");
+			String healthInsuranceCompaniesInString = "";
+			if (doctor.getCareer().getListOfHealthInsuranceCompanies() != null) {
+				for (String healthInsuranceCompany : doctor.getCareer().getListOfHealthInsuranceCompanies())
+					healthInsuranceCompaniesInString += healthInsuranceCompany + "\n";
+				generalDoctorProfileInterface.getHealthInsuranceCompaniesEditText().setText(healthInsuranceCompaniesInString);
+			}
+			generalDoctorProfileInterface.getMobileNumberEditText().setText(doctor.getCareer().getBusinessMobileNumber());
+			new FirebaseListener(new FirebaseListeners() {
+				@Override
+				public void ValueEventListener ( Object data, DataSnapshot dataSnapshot, String ID ) {
+
+				}
+
+				@Override
+				public void SingleValueEventListener ( Object data, DataSnapshot dataSnapshot, String ID ) {
+					if (dataSnapshot.getValue() != null)
+						generalDoctorProfileInterface.getMedicalFieldEditText().setText(dataSnapshot.getValue(String.class));
+				}
+
+				@Override
+				public void onFailure ( Object data, Throwable error, String ID ) {
+
+				}
+			}).initSingleValueEventListener(null, DatabasePathFactory.pathTo_MedicalFieldIdentifier_FieldUID_Name_Language(doctor.getCareer().getFieldID(), defaultLanguage), FirebaseContracts.PATH_TO_MEDICALFIELDSIDENTIFIER);
+			generalDoctorProfileInterface.getRateRatingBar().setRating(Float.valueOf(String.valueOf(doctor.getCareer().getRate())));
+			generalDoctorProfileInterface.getVotes().setText(doctor.getCareer().getVotes() + "");
 		}
-		generalDoctorProfileInterface.getMobileNumberEditText().setText(doctor.getCareer().getBusinessMobileNumber());
-		new FirebaseListener(new FirebaseListeners() {
-			@Override
-			public void ValueEventListener ( Object data, DataSnapshot dataSnapshot, String ID ) {
-
-			}
-
-			@Override
-			public void SingleValueEventListener ( Object data, DataSnapshot dataSnapshot, String ID ) {
-				if (dataSnapshot.getValue() != null)
-					generalDoctorProfileInterface.getMedicalFieldEditText().setText(dataSnapshot.getValue(String.class));
-			}
-
-			@Override
-			public void onFailure ( Object data, Throwable error, String ID ) {
-
-			}
-		}).initSingleValueEventListener(null, DatabasePathFactory.pathTo_MedicalFieldIdentifier_FieldUID_Name_Language(doctor.getCareer().getFieldID(), defaultLanguage), FirebaseContracts.PATH_TO_MEDICALFIELDSIDENTIFIER);
-		generalDoctorProfileInterface.getRateRatingBar().setRating(Float.valueOf(String.valueOf(doctor.getCareer().getRate())));
-		generalDoctorProfileInterface.getVotes().setText(doctor.getCareer().getVotes() + "");
 	}
 
 	@Override

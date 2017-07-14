@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.kareem.infiniteexpandablelist.InfiniteExpandableListViewHolder;
 import com.kareem.yladoctor.Factories.DatabasePathFactory;
@@ -34,7 +35,7 @@ import butterknife.OnClick;
  * @version %I%
  */
 
-public class ScheduleDoctorTimeChildViewHolder extends InfiniteExpandableListViewHolder implements FirebaseListeners {
+public class ScheduleItemDoctorViewHolder extends InfiniteExpandableListViewHolder implements FirebaseListeners {
 	private Patient patient;
 	@BindView(R.id.appointmentHistoryCollapsed_imageView_profilePicture)
 	ImageView profilePicture;
@@ -66,7 +67,8 @@ public class ScheduleDoctorTimeChildViewHolder extends InfiniteExpandableListVie
 		new AlertDialog.Builder(getView().getContext()).setTitle(value).setPositiveButton("YES", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick ( DialogInterface dialog, int which ) {
-				new ScheduleFactory((Schedule) getData(), getView().getContext()).approveAppointment();
+				//uncomment later
+//				new ScheduleFactory((Schedule) getData(), getView().getContext()).approveAppointment();
 			}
 		}).show();
 	}
@@ -95,12 +97,12 @@ public class ScheduleDoctorTimeChildViewHolder extends InfiniteExpandableListVie
 //		getView().getContext().startActivity(i);
 	}
 
-	public ScheduleDoctorTimeChildViewHolder ( View view, Object data ) {
+	public ScheduleItemDoctorViewHolder ( View view, Object data ) {
 		super(view, data);
 		ButterKnife.bind(this, view);
 		Schedule s = (Schedule) data;
-		date.setText(s.getDate());
-		new FirebaseListener(this).initSingleValueEventListener(null, DatabasePathFactory.pathTo_User_UserUID(s.getUid()), FirebaseContracts.PATH_TO_USERS);
+		date.setText(s.getScheduleStartTime());
+		new FirebaseListener(this).initSingleValueEventListener(null, DatabasePathFactory.pathTo_User_UserUID(FirebaseAuth.getInstance().getCurrentUser().getUid()), FirebaseContracts.PATH_TO_USERS);
 	}
 
 	@Override

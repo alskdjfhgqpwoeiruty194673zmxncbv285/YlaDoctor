@@ -30,6 +30,7 @@ import com.kareem.yladoctor.Models.Interfaces.ViewModelsInterfaces.UIModels.Gene
 import com.kareem.yladoctor.Models.Modules.User.Businesses.Individuals.Doctor;
 import com.kareem.yladoctor.R;
 import com.kareem.yladoctor.ViewModels.UIModels.fragments.general.DoctorMainScreenOneViewModel;
+import com.kareem.yladoctor.Views.Dialogs.EditScheduleDialog;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.HashMap;
@@ -63,10 +64,11 @@ public class DoctorMainScreenOne extends Fragment implements GeneralDoctorMainSc
 		doctorMainScreenOneViewModel.onMenuClicked();
 	}
 
-	@OnClick(R.id.doctorMainViewOne_button_editSchedule)
-	public void onEditScheduleClicked () {
-		// TODO: 7/6/2017 edit schedule dialog
-	}
+//	@OnClick(R.id.doctorMainViewOne_button_editSchedule)
+//	public void onEditScheduleClicked () {
+//		// TODO: 7/6/2017 edit schedule dialog
+//		new EditScheduleDialog(this.getActivity()).show();
+//	}
 
 	@OnClick(R.id.doctorMainViewOne_button_viewAsPatient)
 	public void onViewAsPatientClicked () {

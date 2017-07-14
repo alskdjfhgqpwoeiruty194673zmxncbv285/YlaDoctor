@@ -12,11 +12,15 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/doctorEditSchedule_imageButton_previousDay"
             android:layout_width="40dp"
+            android:padding="5dp"
+            android:background="#00000000"
             android:layout_height="40dp"
             android:src="@mipmap/arrow_right"/>
 
         <TextView
+            android:id="@+id/doctorEditSchedule_textView_weekDayName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -26,15 +30,24 @@
             android:textSize="20sp"/>
 
         <ImageButton
+            android:id="@+id/doctorEditSchedule_imageButton_nextDay"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:padding="5dp"
+            android:background="#00000000"
             android:src="@mipmap/arrow_left"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:orientation="horizontal">
-
+<ImageView
+    android:id="@+id/doctorEditSchedule_imageView_addSchedule"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@mipmap/add"
+    android:layout_gravity="center"/>
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -48,9 +61,11 @@
                 app:cardCornerRadius="5dp">
 
                 <Button
+                    android:id="@+id/doctorEditSchedule_button_fromTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:enabled="false"
                     android:background="#00000000"
                     android:clickable="false"
                     android:text="From"/>
@@ -70,26 +85,31 @@
                 app:cardCornerRadius="5dp">
 
                 <Button
+                    android:id="@+id/doctorEditSchedule_button_toTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:clickable="false"
+                    android:enabled="false"
                     android:background="#00000000"
                     android:text="To"/>
             </android.support.v7.widget.CardView>
         </FrameLayout>
         <Switch
+android:id="@+id/doctorEditSchedule_switch_activateDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:checked="true"
+            android:layout_marginEnd="5dp"
+            android:checked="false"
             android:layout_gravity="center"/>
     </LinearLayout>
 
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/doctorEditSchedule_recyclerView_listOfActiveSchedules"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="20dp"
         android:layout_weight="1"
-        android:visibility="gone"></android.support.v7.widget.RecyclerView>
+        android:visibility="gone"/>
 </LinearLayout>

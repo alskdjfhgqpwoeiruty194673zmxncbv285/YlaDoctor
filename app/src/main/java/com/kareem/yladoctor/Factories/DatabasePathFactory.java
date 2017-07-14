@@ -44,4 +44,17 @@ public class DatabasePathFactory {
 		return getReference().child(FirebaseContracts.PATH_TO_MEDICALFIELDSIDENTIFIER).child(MedicaFieldUID).child(FirebaseContracts.PATH_TO_MEDICALFIELDSIDENTIFIER_MEDICALFIELDSIDENTIFIERID_NAMES).child(defaultLanguages);
 	}
 
+	//	public static DatabaseReference pathTo_ScheduleIdentifier_userUID_weekDay ( String UID, WeekDays weekDay ) {
+//		return getReference().child(FirebaseContracts.PATH_TO_SCHEDULEIDENTIFIER + "/" + UID + "/" + weekDay.toString());
+//
+//	}
+	public static DatabaseReference pathTo_Schedule_userUID_weekDay ( String UID, WeekDays weekDay ) {
+		return getReference().child(FirebaseContracts.PATH_TO_SCHEDULE + "/" + UID + "/" + weekDay.toString());
+
+	}
+
+	public static DatabaseReference pathTo_MedicalFields_MedicalFieldUID ( String FieldUID ) {
+		return getReference().child(FirebaseContracts.PATH_TO_MEDICALFIELDS + "/" + FieldUID);
+
+	}
 }

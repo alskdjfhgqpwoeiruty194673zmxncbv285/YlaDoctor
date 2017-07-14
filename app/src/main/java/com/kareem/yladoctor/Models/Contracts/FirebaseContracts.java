@@ -56,7 +56,7 @@ public class FirebaseContracts {
 			  = "listOfHealthInsuranceCompanies";
 
 	//used only for the career factories as communication between factories
-	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_CAREER_ITEM= "item";
+	public static final String PATH_TO_USERS_INDIVIDUALBUSINESSUID_CAREER_ITEM = "item";
 
 
 	public static final String PATH_TO_MEDICALFIELDSIDENTIFIER = "MedicalFieldsIdentifier";
@@ -103,8 +103,10 @@ public class FirebaseContracts {
 	public static final String PATH_TO_SCHEDULE = "schedule";
 	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION = "condition";
 	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NOVALUE = "noValue";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_ONHOLD = "onHold";
 	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_DONE = "done";
-	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_CANCELLED = "cancelled";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_CANCELLEDFROMDOCTOR = "cancelledFromDoctor";
+	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_CANCELLEDFROMPATIENT = "cancelledFromPatient";
 	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NEEDAPPROVAL = "needApproval";
 	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_NOTAPPROVED = "notApproved";
 	public static final String PATH_TO_SCHEDULE_DOCTORUID_DAYNAME_SLOTTIME_CONDITION_APPROVEDANDNEEDRELEASING = "approvedAndNeedReleasing";

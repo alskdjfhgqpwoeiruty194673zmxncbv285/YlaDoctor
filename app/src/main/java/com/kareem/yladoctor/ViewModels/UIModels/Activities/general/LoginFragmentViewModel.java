@@ -47,50 +47,7 @@ public class LoginFragmentViewModel {
 	private void initializeStartingPointForAlreadyLoggedInOrNeedToLogIn () {
 		loginUserManager.createAndShowLoadingDialog();
 		if (GeneralLoginHandler.checkForUserAlreadySignedIn()) {
-			ConnectivityManager connectivityManager = (ConnectivityManager) loginUserManager.getAppCompatActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-			NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-			if (networkInfo != null && networkInfo.isConnected()) {
-				new FirebaseListener(new FirebaseListeners() {
-					@Override
-					public void ValueEventListener ( Object data, DataSnapshot dataSnapshot, String ID ) {
-
-					}
-
-
-					@Override
-					public void SingleValueEventListener ( Object data, DataSnapshot dataSnapshot, String ID ) {
-						if (dataSnapshot.getValue() != null) {
-							User user = null;
-							switch (dataSnapshot.child(FirebaseContracts.PATH_TO_USERS_USERUID_ACCOUNTTYPE).getValue(AccountType.class)) {
-								case DOCTOR:
-									user = dataSnapshot.getValue(Doctor.class);
-									break;
-								case PATIENT:
-									user = dataSnapshot.getValue(Patient.class);
-									break;
-								default:
-									user = dataSnapshot.getValue(User.class);
-							}
-							((MainApplication) loginUserManager.getAppCompatActivity().getApplication()).setUser(user);
-							UserAccountTypeManager.setAccountType(loginUserManager.getAppCompatActivity(), user.getAccountType());
-							triggerConnectedUser();
-						} else
-							TastyToast.makeText(loginUserManager.getAppCompatActivity(), "Your data couldn't be retrieved!", TastyToast.LENGTH_LONG, TastyToast.ERROR);
-					}
-
-					@Override
-					public void onFailure ( Object data, Throwable error, String ID ) {
-
-						TastyToast.makeText(loginUserManager.getAppCompatActivity(), error.getMessage(), TastyToast.LENGTH_LONG, TastyToast.ERROR);
-					}
-				}).initSingleValueEventListener(null, DatabasePathFactory.pathTo_User_UserUID(FirebaseAuth.getInstance().getCurrentUser().getUid()), FirebaseContracts.PATH_TO_USERS);
-			} else
-				new AlertDialog.Builder(loginUserManager.getAppCompatActivity()).setTitle("No Available Internet Connection").setPositiveButton("Continue anyWay!", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick ( DialogInterface dialog, int which ) {
-						triggerUnConnectedUser();
-					}
-				}).show();
+			triggerUnConnectedUser();
 		} else
 			loginUserManager.dismissLoadingDialog();
 	}

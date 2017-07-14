@@ -1,4 +1,4 @@
-package com.kareem.yladoctor.Models.Dialogs;
+package com.kareem.yladoctor.Views.Dialogs;
 
 import android.app.Dialog;
 import android.content.Context;

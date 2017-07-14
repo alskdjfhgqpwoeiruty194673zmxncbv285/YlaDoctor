@@ -16,12 +16,8 @@ import com.kareem.yladoctor.Factories.DatabasePathFactory;
 import com.kareem.yladoctor.Models.Contracts.FirebaseContracts;
 import com.kareem.yladoctor.Models.Helpers.FirebaseListener;
 import com.kareem.yladoctor.Models.Interfaces.FirebaseListeners;
-import com.kareem.yladoctor.Models.Modules.ScheduleModules.ScheduleWeek;
 import com.kareem.yladoctor.Models.Singletons.InfiniteExpandableListSingleton;
 import com.kareem.yladoctor.R;
-import com.kareem.yladoctor.Views.ViewHolders.ScheduleViewHolders.ScheduleDayTimeViewHolder;
-
-import java.util.ArrayList;
 
 /**
  * Created by kareem on 9/19/2016 - YlaDoctor.
@@ -36,9 +32,9 @@ public abstract class GeneralBusinessSchedule extends Fragment implements Fireba
 	//	private ScheduleRegulator scheduleRegulator;
 	LayoutInflater inflater;
 	String UID;
-	ArrayList<View> days;
-	ArrayList<View> slots;
-	ArrayList<View> inside;
+//	ArrayList<View> days;
+//	ArrayList<View> slots;
+//	ArrayList<View> inside;
 
 	@Override
 	public View onCreateView ( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
@@ -50,10 +46,11 @@ public abstract class GeneralBusinessSchedule extends Fragment implements Fireba
 	public void onViewCreated ( View view, Bundle savedInstanceState ) {
 		super.onViewCreated(view, savedInstanceState);
 		UID = getUID();
-		new FirebaseListener(this).initSingleValueEventListener(null, DatabasePathFactory.pathTo_Business_schedule(UID), FirebaseContracts.PATH_TO_SCHEDULEIDENTIFIER);
-		days = new ArrayList<>();
-		slots = new ArrayList<>();
-		inside = new ArrayList<>();
+//		if (callScheduleList())
+//		days = new ArrayList<>();
+//		slots = new ArrayList<>();
+//		inside = new ArrayList<>();
+
 		InfiniteExpandableListSingleton.getInstance(new InfiniteExpandableListInterface() {
 			@Override
 			public Activity getActivity () {
@@ -65,8 +62,10 @@ public abstract class GeneralBusinessSchedule extends Fragment implements Fireba
 				return R.id.generalBusinessSchedule_linearLayout_container;
 			}
 		});
-
+		initializeData();
 	}
+
+	protected abstract void initializeData ();
 
 	public abstract String getUID ();
 
@@ -79,12 +78,7 @@ public abstract class GeneralBusinessSchedule extends Fragment implements Fireba
 	public void SingleValueEventListener ( Object data, DataSnapshot dataSnapshot, String ID ) {
 		switch (ID) {
 			case FirebaseContracts.PATH_TO_SCHEDULEIDENTIFIER:
-				ScheduleWeek scheduleWeek = dataSnapshot.getValue(ScheduleWeek.class);
-				if (scheduleWeek != null)
-					InfiniteExpandableListSingleton.getInstance(null).createLevel(scheduleWeek.listOfDays(), ScheduleDayTimeViewHolder.class, R.layout.general_schedule_item);
-				else {
-					GeneralBusinessSchedule.this.getView().findViewById(R.id.generalBusinessSchedule_textView_noAssignedScheduleWarning).setVisibility(View.VISIBLE);
-				}
+				onDaysCalled(data, dataSnapshot);
 				break;
 		}
 	}
@@ -93,4 +87,5 @@ public abstract class GeneralBusinessSchedule extends Fragment implements Fireba
 	public void onFailure ( Object data, Throwable error, String ID ) {
 
 	}
+	public abstract void onDaysCalled(Object data, DataSnapshot dataSnapshot);
 }

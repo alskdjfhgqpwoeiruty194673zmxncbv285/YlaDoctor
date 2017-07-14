@@ -25,7 +25,7 @@
                 android:padding="5dp">
 
                 <ImageView
-                    android:id="@+id/doctorMedicalFieldItem_imageView_image"
+                    android:id="@+id/listOfDoctorMedicalFieldItem_imageView_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
@@ -35,6 +35,7 @@
                     android:src="@mipmap/identity"/>
 
                 <android.support.v7.widget.AppCompatRatingBar
+                    android:id="@+id/listOfDoctorMedicalFieldItem_ratingBar_rate"
                     style="?attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -45,8 +46,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="1dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="1dp">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -54,7 +55,7 @@
                         android:src="@mipmap/identity"/>
 
                     <TextView
-                        android:id="@+id/doctorMedicalFieldItem_textView_numberOfDoctors"
+                        android:id="@+id/listOfDoctorMedicalFieldItem_textView_numberOfDoctors"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10"
@@ -110,7 +111,7 @@
                         android:src="@mipmap/my_location"/>
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/doctorMedicalFieldItem_textView_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -134,6 +135,7 @@
 
 
                     <TextView
+                        android:id="@+id/doctorMedicalFieldItem_textView_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="25dp"
@@ -150,6 +152,7 @@
                         android:textSize="12sp"/>
 
                     <TextView
+                        android:id="@+id/doctorMedicalFieldItem_textView_experience"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -173,20 +176,34 @@
                 android:orientation="vertical"
                 android:padding="5dp">
 
-                <ImageButton
-                    android:id="@+id/imageButton"
+                <ImageView
+                    android:id="@+id/doctorMedicalFieldItem_ImageView_favourite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="#00FFFFFF"
                     android:src="@mipmap/emptyfavourite"/>
 
-                <TextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:text="0 points"/>
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/doctorMedicalFieldItem_textView_points"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="0"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text=" points"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -197,6 +214,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/doctorMedicalFieldItem_button_bookAppointment"
                 style="?buttonBarNegativeButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -204,6 +222,7 @@
                 android:text="Book Appointment"/>
 
             <Button
+                android:id="@+id/doctorMedicalFieldItem_button_viewProfile"
                 style="?buttonBarNegativeButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
